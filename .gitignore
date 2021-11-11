@@ -1,0 +1,8 @@
+*.suo
+*.dll
+*.xml
+packages
+bin
+obj
+*.sln
+SecretUtils.cs

@@ -68,6 +68,7 @@ namespace Sprado.Forms
                 ProgramUtils.LoggedUser.Add("email", textBox1.Text);
                 ProgramUtils.LoggedUser["logged"] = true;
                 ProgramUtils.MainUI.Login();
+                this.Hide();
                 return;
             }
         }
@@ -90,7 +91,10 @@ namespace Sprado.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             if (IS_LOGIN)
-                login();
+            {
+                if(!textBox1.Text.Equals("") && !textBox2.Text.Equals(""))
+                    login();
+            }
             else
                 changeMode(true);
         }
@@ -98,7 +102,10 @@ namespace Sprado.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             if (!IS_LOGIN)
-                register();
+            {
+                if(!textBox1.Text.Equals("") && !textBox2.Text.Equals("") && !textBox3.Text.Equals("") && !textBox4.Text.Equals("") && !textBox6.Text.Equals(""))
+                    register();
+            }
             else
                 changeMode(false);
         }

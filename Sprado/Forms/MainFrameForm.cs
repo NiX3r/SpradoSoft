@@ -104,6 +104,7 @@ namespace Sprado
             CURRENT_FORM = ProgramUtils.SubForms[SELECTED_BUTTON.Text];
             selectButton(SELECTED_BUTTON);
             openForm(ProgramUtils.SubForms[SELECTED_BUTTON.Text]);
+            UpdateUser();
         }
 
     }

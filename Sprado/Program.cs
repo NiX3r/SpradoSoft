@@ -22,11 +22,11 @@ namespace Sprado
 
             LogUtils.Log("Start initialize program");
             ProgramUtils.Colors = new Dictionary<string, Color>();
-            ProgramUtils.Colors.Add("MAIN", Color.FromArgb(0, 153, 255));
-            ProgramUtils.Colors.Add("SECONDARY", Color.FromArgb(0, 49, 81));
-            ProgramUtils.Colors.Add("FONT", Color.FromArgb(240, 240, 240));
-            ProgramUtils.Colors.Add("MENU", Color.FromArgb(55, 55, 55));
-            ProgramUtils.Colors.Add("BACKGROUND", Color.FromArgb(44, 44, 44));
+            ProgramUtils.Colors.Add("main", Color.FromArgb(0, 153, 255));
+            ProgramUtils.Colors.Add("secondary", Color.FromArgb(0, 49, 81));
+            ProgramUtils.Colors.Add("font", Color.FromArgb(240, 240, 240));
+            ProgramUtils.Colors.Add("menu", Color.FromArgb(55, 55, 55));
+            ProgramUtils.Colors.Add("background", Color.FromArgb(44, 44, 44));
 
             ProgramUtils.SubForms = new Dictionary<string, Form>();
             ProgramUtils.SubForms.Add("Úvodní strana", new HomeForm());
@@ -39,7 +39,7 @@ namespace Sprado
             ProgramUtils.SubForms.Add("Nastavení", new SettingsForm());
 
             ProgramUtils.LoggedUser = new Dictionary<string, object>();
-            ProgramUtils.LoggedUser.Add("LOGGED", false);
+            ProgramUtils.LoggedUser.Add("logged", false);
 
             ProgramUtils.MainUI = new MainFrame();
 

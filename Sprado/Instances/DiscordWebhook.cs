@@ -17,9 +17,13 @@ namespace Sprado.Instances
         private readonly WebClient dWebClient;
         private static NameValueCollection discordValues = new NameValueCollection();
         private const string example = "__**ERROR REPORT**__\n" +
+                                       "**Time**: `%time%`\n" +
                                        "**Message:** `%message%`\n" +
-                                       "**Location:** `%loc%`\n" +
-                                       "**Shown:** `%create%`\n" +
+                                       "**Location:**\n" + 
+                                       "  File: `%file%`\n" +
+                                       "  Caller: `%caller%`\n" +
+                                       "  Line: `%line%`\n" +
+                                       "**Date:** `%create%`\n" +
                                        "**OS:** `%os%`\n" +
                                        "**MAC:** ||`%mac%`||\n" +
                                        "**IP:** ||`%ip%`||\n" +
@@ -34,7 +38,7 @@ namespace Sprado.Instances
         }
 
 
-        public void SendMessage(Exception ex)
+        public void SendMessage(Exception ex, int line, string caller, string file, long time)
         {
 
             LogUtils.Log("Discord webhook send");
@@ -50,7 +54,10 @@ namespace Sprado.Instances
 
             string msg = example;
             msg = msg.Replace("%message%", ex.Message)
-                        .Replace("%loc%", ex.StackTrace)
+                        .Replace("%time%", time.ToString())
+                        .Replace("%file%", file)
+                        .Replace("%caller%", caller)
+                        .Replace("%line%", line.ToString())
                         .Replace("%create%", DateTime.Now.ToString("dd.MM.yyyy HH:mm"))
                         .Replace("%os%", FriendlyName())
                         .Replace("%mac%", macAddr)

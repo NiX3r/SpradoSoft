@@ -25,13 +25,13 @@ namespace Sprado
             InitializeComponent();
 
             openForm(new LoginForm());
-            label2.ForeColor = ProgramUtils.Colors["MAIN"];
+            label2.ForeColor = ProgramUtils.Colors["main"];
 
         }
 
         private void controlButton_Click(object sender, EventArgs e)
         {
-            if((bool)ProgramUtils.LoggedUser["LOGGED"])
+            if((bool)ProgramUtils.LoggedUser["logged"])
             {
                 selectButton((Button)sender);
                 openForm(ProgramUtils.SubForms[((Button)sender).Text]);
@@ -58,9 +58,9 @@ namespace Sprado
         private void selectButton(Button button)
         {
 
-            SELECTED_BUTTON.ForeColor = ProgramUtils.Colors["FONT"];
+            SELECTED_BUTTON.ForeColor = ProgramUtils.Colors["font"];
             SELECTED_BUTTON = button;
-            SELECTED_BUTTON.ForeColor = ProgramUtils.Colors["MAIN"];
+            SELECTED_BUTTON.ForeColor = ProgramUtils.Colors["main"];
 
         }
 
@@ -68,14 +68,14 @@ namespace Sprado
         {
 
             ((Button)sender).Size = new Size(((Button)sender).Size.Width, 45);
-            ((Button)sender).BackColor = ProgramUtils.Colors["SECONDARY"];
+            ((Button)sender).BackColor = ProgramUtils.Colors["secondary"];
 
         }
 
         private void controlButton_MouseLeave(object sender, EventArgs e)
         {
             ((Button)sender).Size = new Size(((Button)sender).Size.Width, 40);
-            ((Button)sender).BackColor = ProgramUtils.Colors["MENU"];
+            ((Button)sender).BackColor = ProgramUtils.Colors["menu"];
         }
 
         private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
@@ -85,14 +85,20 @@ namespace Sprado
             Application.Exit();
         }
 
-        public void refreshColors()
+        public void RefreshColors()
         {
             LogUtils.Log("Refreshing form colors");
-            panel1.BackColor = ProgramUtils.Colors["MENU"];
-            subFormPanel.BackColor = ProgramUtils.Colors["BACKGROUND"];
+            panel1.BackColor = ProgramUtils.Colors["menu"];
+            subFormPanel.BackColor = ProgramUtils.Colors["background"];
         }
 
-        public void login()
+        public void UpdateUser()
+        {
+            label2.Text = ProgramUtils.LoggedUser["firstname"] + " " + ProgramUtils.LoggedUser["lastname"];
+            pictureBox1.ImageLocation = (string)ProgramUtils.LoggedUser["profile"];
+        }
+
+        public void Login()
         {
             SELECTED_BUTTON = buttonHome;
             CURRENT_FORM = ProgramUtils.SubForms[SELECTED_BUTTON.Text];

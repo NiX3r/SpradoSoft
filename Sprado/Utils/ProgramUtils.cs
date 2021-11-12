@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,13 +26,13 @@ namespace Sprado.Utils
         /// Method for save error log and send it through discord webhook
         /// </summary>
         /// <param name="ex"> specific error </param>
-        public static void ExceptionThrowned(Exception ex)
+        public static void ExceptionThrowned(Exception ex, [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = "null", [CallerFilePath] string file = "null")
         {
 
-            // Save error in log
+            long time = DateTime.Now.Ticks;
             LogUtils.Log("ERROR >> " + ex.Message);
-            // Send error to discord webhook
-            WEBHOOK.SendMessage(ex);
+            WEBHOOK.SendMessage(ex, lineNumber, caller, file, time);
+            MessageBox.Show($"Chyba!\nNeboj, kód chyby byl odeslán vývojáři. Vyřešíme ji co nejdříve budeme moct!\nČas chyby: {time}\n\nDěkujeme za strpení.");
 
         }
 

@@ -33,7 +33,7 @@ namespace Sprado
             log += line;
 
             index++;
-            if (index == 50)
+            if (index == 10)
             {
                 index = 0;
                 Save();
@@ -49,6 +49,11 @@ namespace Sprado
             writer.Write(log);
             writer.Flush();
             writer.Close();
+        }
+
+        public static string GetRAMLog()
+        {
+            return log;
         }
 
     }

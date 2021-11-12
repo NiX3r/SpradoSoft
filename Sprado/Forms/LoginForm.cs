@@ -71,6 +71,7 @@ namespace Sprado.Forms
                 this.Hide();
                 return;
             }
+            MessageBox.Show("Bohužel žádný takový uživatel s tímto heslem nebo emailem neexistuje.\n\nTIP: Zapomněli jste-li heslo, nechte si jej obnovit u správce");
         }
 
         private void register()

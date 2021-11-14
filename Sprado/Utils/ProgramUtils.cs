@@ -36,5 +36,19 @@ namespace Sprado.Utils
 
         }
 
+        public static Bitmap RecolorImage(Bitmap image, string colorKey)
+        {
+            Bitmap bm = image;
+            for (int y = 0; y < bm.Height; y++)
+            {
+                for (int x = 0; x < bm.Width; x++)
+                {
+                    if (bm.GetPixel(x, y).A > 0)
+                        bm.SetPixel(x, y, ProgramUtils.Colors[colorKey]);
+                }
+            }
+            return bm;
+        }
+
     }
 }

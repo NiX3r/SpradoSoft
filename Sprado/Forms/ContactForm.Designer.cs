@@ -159,6 +159,7 @@ namespace Sprado.Forms
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 115;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label13
             // 
@@ -199,6 +200,7 @@ namespace Sprado.Forms
             this.tLastEditAuthor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tLastEditAuthor.Location = new System.Drawing.Point(445, 235);
             this.tLastEditAuthor.Name = "tLastEditAuthor";
+            this.tLastEditAuthor.ReadOnly = true;
             this.tLastEditAuthor.Size = new System.Drawing.Size(289, 15);
             this.tLastEditAuthor.TabIndex = 111;
             // 
@@ -221,6 +223,7 @@ namespace Sprado.Forms
             this.tLastEditDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tLastEditDate.Location = new System.Drawing.Point(448, 193);
             this.tLastEditDate.Name = "tLastEditDate";
+            this.tLastEditDate.ReadOnly = true;
             this.tLastEditDate.Size = new System.Drawing.Size(289, 15);
             this.tLastEditDate.TabIndex = 109;
             // 
@@ -243,6 +246,7 @@ namespace Sprado.Forms
             this.tCreateAuthor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tCreateAuthor.Location = new System.Drawing.Point(448, 151);
             this.tCreateAuthor.Name = "tCreateAuthor";
+            this.tCreateAuthor.ReadOnly = true;
             this.tCreateAuthor.Size = new System.Drawing.Size(289, 15);
             this.tCreateAuthor.TabIndex = 107;
             // 
@@ -265,6 +269,7 @@ namespace Sprado.Forms
             this.tCreateDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tCreateDate.Location = new System.Drawing.Point(448, 109);
             this.tCreateDate.Name = "tCreateDate";
+            this.tCreateDate.ReadOnly = true;
             this.tCreateDate.Size = new System.Drawing.Size(289, 15);
             this.tCreateDate.TabIndex = 105;
             // 

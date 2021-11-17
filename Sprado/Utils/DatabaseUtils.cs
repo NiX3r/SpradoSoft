@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static Sprado.Enums.DatabaseMethodResponseEnum;
 
 namespace Sprado.Utils
@@ -146,6 +147,36 @@ namespace Sprado.Utils
                 return DatabaseResponse.ERROR;
             }
 
+        }
+
+        public static Dictionary<int, Dictionary<string, object>> GetContact(string name, string firstname, string lastname, string mail, int phone, int house_id, string description)
+        {
+            Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string, object>>();
+            string cmd = $"SELECT * FROM Contact WHERE " +
+                         (name.Equals("") ? "" : $"Name LIKE '%{name}%' AND ") +
+                         (firstname.Equals("") ? "" : $"Firstname LIKE '%{firstname}%' AND ") +
+                         (lastname.Equals("") ? "" : $"Lastname LIKE '%{lastname}%' AND ") +
+                         (mail.Equals("") ? "" : $"Email LIKE '%{mail}%' AND ") +
+                         (phone == -1 ? "" : "Phone=" + phone + " AND ") +
+                         (house_id == -1 ? "" : "House_ID=" + house_id + " AND ") +
+                         (description.Equals("") ? "" : $"Description LIKE '%{description}%'");
+            if (cmd.Substring(cmd.Length - 5).Equals(" AND "))
+                cmd = cmd.Substring(0, cmd.Length - 5);
+            MessageBox.Show(cmd);
+            var command = new MySqlCommand(cmd, connection);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                int id = reader.GetInt32(0);
+                Dictionary<string, object> data = new Dictionary<string, object>();
+                for(int i = 1; i < reader.FieldCount; i++)
+                {
+                    data.Add(reader.GetName(i), reader.GetValue(i));
+                }
+                response.Add(id, data);
+            }
+            reader.Close();
+            return response;
         }
 
         // END OF CONTACT FORM UTILS

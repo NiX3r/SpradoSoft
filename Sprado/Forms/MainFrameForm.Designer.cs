@@ -200,7 +200,6 @@ namespace Sprado
             this.Controls.Add(this.subFormPanel);
             this.Controls.Add(this.panel1);
             this.Name = "MainFrame";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFrame_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

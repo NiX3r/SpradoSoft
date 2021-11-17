@@ -107,5 +107,10 @@ namespace Sprado.Forms
 
             }
         }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("mailto:" + tMail.Text);
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace Sprado.Utils
         public static Dictionary<string, Color> Colors { get; set; }
         public static Dictionary<string, Form> SubForms { get; set; }
         public static Dictionary<string, object> LoggedUser { get; set; }
+        public static Dictionary<string, Bitmap> Images { get; set; }
 
         private static DiscordWebhook WEBHOOK = new DiscordWebhook();
 
@@ -48,6 +49,21 @@ namespace Sprado.Utils
                 }
             }
             return bm;
+        }
+
+        public static void RecolorAllImages(string colorKey)
+        {
+            foreach(string item in Images.Keys)
+            {
+                for (int y = 0; y < Images[item].Height; y++)
+                {
+                    for (int x = 0; x < Images[item].Width; x++)
+                    {
+                        if (Images[item].GetPixel(x, y).A > 0)
+                            Images[item].SetPixel(x, y, ProgramUtils.Colors[colorKey]);
+                    }
+                }
+            }
         }
 
     }

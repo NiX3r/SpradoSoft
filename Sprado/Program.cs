@@ -38,10 +38,19 @@ namespace Sprado
             ProgramUtils.SubForms.Add("Seznam dle ...", new ListForm());
             ProgramUtils.SubForms.Add("Nastavení", new SettingsForm());
 
+            ProgramUtils.Images = new Dictionary<string, Bitmap>();
+            ProgramUtils.Images.Add("add", Sprado.Properties.Resources.add);
+            ProgramUtils.Images.Add("remove", Sprado.Properties.Resources.remove);
+            ProgramUtils.Images.Add("edit", Sprado.Properties.Resources.edit);
+            ProgramUtils.Images.Add("search", Sprado.Properties.Resources.magnifier);
+            ProgramUtils.RecolorAllImages("main");
+
             ProgramUtils.LoggedUser = new Dictionary<string, object>();
             ProgramUtils.LoggedUser.Add("logged", false);
 
             ProgramUtils.MainUI = new MainFrame();
+
+            LogUtils.Log("Initialize program done");
 
             // Check database connection
             if (DatabaseUtils.OpenConnection())

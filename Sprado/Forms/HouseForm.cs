@@ -21,10 +21,10 @@ namespace Sprado.Forms
         private void HouseForm_Load(object sender, EventArgs e)
         {
 
-            pictureBox1.Image = ProgramUtils.RecolorImage((Bitmap)pictureBox1.Image, "main");
-            pictureBox2.Image = ProgramUtils.RecolorImage((Bitmap)pictureBox2.Image, "main");
-            pictureBox3.Image = ProgramUtils.RecolorImage((Bitmap)pictureBox3.Image, "main");
-            pictureBox4.Image = ProgramUtils.RecolorImage((Bitmap)pictureBox4.Image, "main");
+            pictureBox1.Image = ProgramUtils.Images["add"];
+            pictureBox2.Image = ProgramUtils.Images["remove"];
+            pictureBox3.Image = ProgramUtils.Images["edit"];
+            pictureBox4.Image = ProgramUtils.Images["search"];
 
         }
     }

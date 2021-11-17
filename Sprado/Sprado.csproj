@@ -149,6 +149,15 @@
     <EmbeddedResource Include="Forms\MainFrameForm.resx">
       <DependentUpon>MainFrameForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RevisionForm.resx">
+      <DependentUpon>RevisionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RevisionManForm.resx">
+      <DependentUpon>RevisionManForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RevisionTypeForm.resx">
+      <DependentUpon>RevisionTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -184,6 +193,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

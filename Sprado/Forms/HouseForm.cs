@@ -25,6 +25,7 @@ namespace Sprado.Forms
             pictureBox2.Image = ProgramUtils.Images["remove"];
             pictureBox3.Image = ProgramUtils.Images["edit"];
             pictureBox4.Image = ProgramUtils.Images["search"];
+            pictureBox5.Image = pictureBox6.Image = ProgramUtils.Images["send"];
 
         }
     }

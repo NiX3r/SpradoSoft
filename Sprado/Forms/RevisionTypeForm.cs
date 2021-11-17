@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sprado.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace Sprado.Forms
         public RevisionTypeForm()
         {
             InitializeComponent();
+        }
+
+        private void RevisionTypeForm_Load(object sender, EventArgs e)
+        {
+            pictureBox1.Image = ProgramUtils.Images["add"];
+            pictureBox2.Image = ProgramUtils.Images["remove"];
+            pictureBox3.Image = ProgramUtils.Images["edit"];
+            pictureBox4.Image = ProgramUtils.Images["search"];
         }
     }
 }

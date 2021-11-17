@@ -43,6 +43,7 @@ namespace Sprado
             ProgramUtils.Images.Add("remove", Sprado.Properties.Resources.remove);
             ProgramUtils.Images.Add("edit", Sprado.Properties.Resources.edit);
             ProgramUtils.Images.Add("search", Sprado.Properties.Resources.magnifier);
+            ProgramUtils.Images.Add("send", Sprado.Properties.Resources.send);
             ProgramUtils.RecolorAllImages("main");
 
             ProgramUtils.LoggedUser = new Dictionary<string, object>();

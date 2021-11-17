@@ -179,6 +179,23 @@ namespace Sprado.Utils
             return response;
         }
 
+        public static DatabaseResponse RemoveContact(int id)
+        {
+            DatabaseResponse response;
+            try
+            {
+                var command = new MySqlCommand($"DELETE FROM Contact WHERE ID={id}", connection);
+                command.ExecuteNonQuery();
+                response = DatabaseResponse.REMOVED;
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+                response = DatabaseResponse.ERROR;
+            }
+            return response;
+        }
+
         // END OF CONTACT FORM UTILS
 
     }

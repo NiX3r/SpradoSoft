@@ -12,6 +12,9 @@ using static Sprado.Enums.DatabaseMethodResponseEnum;
 
 namespace Sprado.Forms
 {
+    /// <summary>
+    /// TODO - Add house selection
+    /// </summary>
     public partial class ContactForm : Form
     {
 
@@ -38,7 +41,24 @@ namespace Sprado.Forms
 
         private void showData()
         {
+            tName.Text = SELECTED_DATA["Name"].ToString();
+            tFirstname.Text = SELECTED_DATA["Firstname"].ToString();
+            tLastname.Text = SELECTED_DATA["Lastname"].ToString();
+            tMail.Text = SELECTED_DATA["Email"].ToString();
+            tPhone.Text = SELECTED_DATA["Phone"].ToString();
+            rtDescription.Text = SELECTED_DATA["Description"].ToString();
+            cbOwner.Checked = (bool)SELECTED_DATA["IsOwner"];
+            tCreateAuthor.Text = SELECTED_DATA["CreateAuthor"].ToString();
+            tCreateDate.Text = ((DateTime)SELECTED_DATA["CreateDate"]).ToString("yyyy-MM-dd HH:mm:ss");
+            tLastEditAuthor.Text = SELECTED_DATA["LastEditAuthor"].ToString();
+            tLastEditDate.Text = ((DateTime)SELECTED_DATA["LastEditDate"]).ToString("yyyy-MM-dd HH:mm:ss");
+        }
 
+        private void clearData()
+        {
+            tName.Text = tFirstname.Text = tLastname.Text = tMail.Text = tPhone.Text = rtDescription.Text = tCreateAuthor.Text = tCreateDate.Text = tLastEditDate.Text = tLastEditAuthor.Text = "";
+            SELECTED_ID = -1;
+            SELECTED_DATA = new Dictionary<string, object>();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -87,7 +107,7 @@ namespace Sprado.Forms
                     SELECTED_DATA = response[SELECTED_ID];
                     showData();
                 }
-                if(response.Count == 0)
+                else if(response.Count == 0)
                 {
                     MessageBox.Show("Je nám líto, ale žádný kontakt s těmito kritérii neexistuje.\n\nTIP: Zkuste si zkontrolovat správnost kritérií.");
                 }
@@ -111,6 +131,30 @@ namespace Sprado.Forms
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("mailto:" + tMail.Text);
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if(SELECTED_ID >= 0)
+            {
+                if (MessageBox.Show("Opravdu si přejete odstranit tento kontakt?", "Odstranění dat", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    DatabaseResponse response = DatabaseUtils.RemoveContact(SELECTED_ID);
+                    switch (response)
+                    {
+                        case DatabaseResponse.REMOVED:
+                            MessageBox.Show("Úspěšně jsi smazal kontakt!");
+                            clearData();
+                            break;
+                        case DatabaseResponse.BAD_INPUT:
+                            MessageBox.Show("Bohužel zadal jsi špatná vstupní data!");
+                            break;
+                        case DatabaseResponse.BAD_VERIFICATION:
+                            MessageBox.Show("Špatné ověření. Prosím kontaktujte správce aplikace!");
+                            break;
+                    }
+                }
+            }
         }
     }
 }

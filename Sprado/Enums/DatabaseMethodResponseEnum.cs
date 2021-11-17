@@ -13,6 +13,7 @@ namespace Sprado.Enums
         {
             OK,
             CREATED,
+            REMOVED,
             ERROR,
             BAD_VERIFICATION,
             BAD_INPUT

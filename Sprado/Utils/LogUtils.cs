@@ -33,7 +33,7 @@ namespace Sprado
             log += line;
 
             index++;
-            if (index == 10)
+            if (index == 40)
             {
                 index = 0;
                 Save();

@@ -41,30 +41,30 @@ namespace Sprado.Forms
             this.label13 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.tLastEditAuthor = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.tLastEditDate = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.tCreateAuthor = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tCreateDate = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.rtDescription = new System.Windows.Forms.RichTextBox();
+            this.tHouse = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.lbHouse = new System.Windows.Forms.ListBox();
+            this.tPhone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tLastname = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tFirstname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tMail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbOwner = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -181,6 +181,7 @@ namespace Sprado.Forms
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 113;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel1
             // 
@@ -190,16 +191,16 @@ namespace Sprado.Forms
             this.panel1.Size = new System.Drawing.Size(690, 5);
             this.panel1.TabIndex = 112;
             // 
-            // textBox8
+            // tLastEditAuthor
             // 
-            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox8.Location = new System.Drawing.Point(445, 235);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(289, 15);
-            this.textBox8.TabIndex = 111;
+            this.tLastEditAuthor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.tLastEditAuthor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tLastEditAuthor.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tLastEditAuthor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tLastEditAuthor.Location = new System.Drawing.Point(445, 235);
+            this.tLastEditAuthor.Name = "tLastEditAuthor";
+            this.tLastEditAuthor.Size = new System.Drawing.Size(289, 15);
+            this.tLastEditAuthor.TabIndex = 111;
             // 
             // label10
             // 
@@ -212,16 +213,16 @@ namespace Sprado.Forms
             this.label10.TabIndex = 110;
             this.label10.Text = "Poslední upravil";
             // 
-            // textBox9
+            // tLastEditDate
             // 
-            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox9.Location = new System.Drawing.Point(448, 193);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(289, 15);
-            this.textBox9.TabIndex = 109;
+            this.tLastEditDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.tLastEditDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tLastEditDate.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tLastEditDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tLastEditDate.Location = new System.Drawing.Point(448, 193);
+            this.tLastEditDate.Name = "tLastEditDate";
+            this.tLastEditDate.Size = new System.Drawing.Size(289, 15);
+            this.tLastEditDate.TabIndex = 109;
             // 
             // label11
             // 
@@ -234,16 +235,16 @@ namespace Sprado.Forms
             this.label11.TabIndex = 108;
             this.label11.Text = "Poslední úprava";
             // 
-            // textBox10
+            // tCreateAuthor
             // 
-            this.textBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox10.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox10.Location = new System.Drawing.Point(448, 151);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(289, 15);
-            this.textBox10.TabIndex = 107;
+            this.tCreateAuthor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.tCreateAuthor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tCreateAuthor.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tCreateAuthor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tCreateAuthor.Location = new System.Drawing.Point(448, 151);
+            this.tCreateAuthor.Name = "tCreateAuthor";
+            this.tCreateAuthor.Size = new System.Drawing.Size(289, 15);
+            this.tCreateAuthor.TabIndex = 107;
             // 
             // label12
             // 
@@ -256,16 +257,16 @@ namespace Sprado.Forms
             this.label12.TabIndex = 106;
             this.label12.Text = "Vytvořil";
             // 
-            // textBox7
+            // tCreateDate
             // 
-            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox7.Location = new System.Drawing.Point(448, 109);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(289, 15);
-            this.textBox7.TabIndex = 105;
+            this.tCreateDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.tCreateDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tCreateDate.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tCreateDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tCreateDate.Location = new System.Drawing.Point(448, 109);
+            this.tCreateDate.Name = "tCreateDate";
+            this.tCreateDate.Size = new System.Drawing.Size(289, 15);
+            this.tCreateDate.TabIndex = 105;
             // 
             // label9
             // 
@@ -289,28 +290,28 @@ namespace Sprado.Forms
             this.label8.TabIndex = 103;
             this.label8.Text = "Popis";
             // 
-            // richTextBox1
+            // rtDescription
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Nirmala UI", 8.25F);
-            this.richTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.richTextBox1.Location = new System.Drawing.Point(47, 295);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(534, 97);
-            this.richTextBox1.TabIndex = 102;
-            this.richTextBox1.Text = "";
+            this.rtDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.rtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtDescription.Font = new System.Drawing.Font("Nirmala UI", 8.25F);
+            this.rtDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.rtDescription.Location = new System.Drawing.Point(47, 295);
+            this.rtDescription.Name = "rtDescription";
+            this.rtDescription.Size = new System.Drawing.Size(534, 97);
+            this.rtDescription.TabIndex = 102;
+            this.rtDescription.Text = "";
             // 
-            // textBox6
+            // tHouse
             // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox6.Location = new System.Drawing.Point(47, 109);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(250, 15);
-            this.textBox6.TabIndex = 99;
+            this.tHouse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.tHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tHouse.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tHouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tHouse.Location = new System.Drawing.Point(47, 109);
+            this.tHouse.Name = "tHouse";
+            this.tHouse.Size = new System.Drawing.Size(250, 15);
+            this.tHouse.TabIndex = 99;
             // 
             // label6
             // 
@@ -319,32 +320,32 @@ namespace Sprado.Forms
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Location = new System.Drawing.Point(73, 85);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 17);
+            this.label6.Size = new System.Drawing.Size(38, 17);
             this.label6.TabIndex = 98;
-            this.label6.Text = "Dům*";
+            this.label6.Text = "Dům";
             // 
-            // listBox1
+            // lbHouse
             // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.Font = new System.Drawing.Font("Nirmala UI", 8.25F);
-            this.listBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(47, 135);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(250, 117);
-            this.listBox1.TabIndex = 97;
+            this.lbHouse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.lbHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbHouse.Font = new System.Drawing.Font("Nirmala UI", 8.25F);
+            this.lbHouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbHouse.FormattingEnabled = true;
+            this.lbHouse.Location = new System.Drawing.Point(47, 135);
+            this.lbHouse.Name = "lbHouse";
+            this.lbHouse.Size = new System.Drawing.Size(250, 117);
+            this.lbHouse.TabIndex = 97;
             // 
-            // textBox5
+            // tPhone
             // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox5.Location = new System.Drawing.Point(323, 109);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(97, 15);
-            this.textBox5.TabIndex = 96;
+            this.tPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.tPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tPhone.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tPhone.Location = new System.Drawing.Point(323, 109);
+            this.tPhone.Name = "tPhone";
+            this.tPhone.Size = new System.Drawing.Size(97, 15);
+            this.tPhone.TabIndex = 96;
             // 
             // label5
             // 
@@ -357,16 +358,16 @@ namespace Sprado.Forms
             this.label5.TabIndex = 95;
             this.label5.Text = "Tel. číslo";
             // 
-            // textBox4
+            // tLastname
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox4.Location = new System.Drawing.Point(561, 51);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(176, 15);
-            this.textBox4.TabIndex = 92;
+            this.tLastname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.tLastname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tLastname.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tLastname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tLastname.Location = new System.Drawing.Point(561, 51);
+            this.tLastname.Name = "tLastname";
+            this.tLastname.Size = new System.Drawing.Size(176, 15);
+            this.tLastname.TabIndex = 92;
             // 
             // label4
             // 
@@ -379,16 +380,16 @@ namespace Sprado.Forms
             this.label4.TabIndex = 91;
             this.label4.Text = "Příjmení*";
             // 
-            // textBox3
+            // tFirstname
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox3.Location = new System.Drawing.Point(323, 51);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(208, 15);
-            this.textBox3.TabIndex = 90;
+            this.tFirstname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.tFirstname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tFirstname.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tFirstname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tFirstname.Location = new System.Drawing.Point(323, 51);
+            this.tFirstname.Name = "tFirstname";
+            this.tFirstname.Size = new System.Drawing.Size(208, 15);
+            this.tFirstname.TabIndex = 90;
             // 
             // label3
             // 
@@ -401,16 +402,16 @@ namespace Sprado.Forms
             this.label3.TabIndex = 89;
             this.label3.Text = "Jméno*";
             // 
-            // textBox1
+            // tName
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox1.Location = new System.Drawing.Point(47, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 15);
-            this.textBox1.TabIndex = 88;
+            this.tName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.tName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tName.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tName.Location = new System.Drawing.Point(47, 51);
+            this.tName.Name = "tName";
+            this.tName.Size = new System.Drawing.Size(250, 15);
+            this.tName.TabIndex = 88;
             // 
             // label1
             // 
@@ -423,16 +424,16 @@ namespace Sprado.Forms
             this.label1.TabIndex = 87;
             this.label1.Text = "Název jednotky*";
             // 
-            // textBox2
+            // tMail
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox2.Location = new System.Drawing.Point(323, 173);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(97, 15);
-            this.textBox2.TabIndex = 126;
+            this.tMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.tMail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tMail.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tMail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tMail.Location = new System.Drawing.Point(323, 173);
+            this.tMail.Name = "tMail";
+            this.tMail.Size = new System.Drawing.Size(97, 15);
+            this.tMail.TabIndex = 126;
             // 
             // label2
             // 
@@ -445,17 +446,17 @@ namespace Sprado.Forms
             this.label2.TabIndex = 125;
             this.label2.Text = "Mail*";
             // 
-            // checkBox1
+            // cbOwner
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.checkBox1.Location = new System.Drawing.Point(337, 229);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(76, 21);
-            this.checkBox1.TabIndex = 127;
-            this.checkBox1.Text = "Majitel?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbOwner.AutoSize = true;
+            this.cbOwner.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.cbOwner.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cbOwner.Location = new System.Drawing.Point(337, 229);
+            this.cbOwner.Name = "cbOwner";
+            this.cbOwner.Size = new System.Drawing.Size(76, 21);
+            this.cbOwner.TabIndex = 127;
+            this.cbOwner.Text = "Majitel*";
+            this.cbOwner.UseVisualStyleBackColor = true;
             // 
             // ContactForm
             // 
@@ -463,8 +464,8 @@ namespace Sprado.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(785, 561);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.cbOwner);
+            this.Controls.Add(this.tMail);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.pictureBox6);
@@ -477,26 +478,26 @@ namespace Sprado.Forms
             this.Controls.Add(this.label13);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.tLastEditAuthor);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.tLastEditDate);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.tCreateAuthor);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.tCreateDate);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.rtDescription);
+            this.Controls.Add(this.tHouse);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.lbHouse);
+            this.Controls.Add(this.tPhone);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.tLastname);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tFirstname);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tName);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ContactForm";
@@ -525,29 +526,29 @@ namespace Sprado.Forms
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox tLastEditAuthor;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox tLastEditDate;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox tCreateAuthor;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox tCreateDate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.RichTextBox rtDescription;
+        private System.Windows.Forms.TextBox tHouse;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.ListBox lbHouse;
+        private System.Windows.Forms.TextBox tPhone;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tLastname;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tFirstname;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tMail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbOwner;
     }
 }

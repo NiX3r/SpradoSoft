@@ -26,8 +26,7 @@ namespace Sprado.Instances
                                        "**Date:** `%create%`\n" +
                                        "**OS:** `%os%`\n" +
                                        "**MAC:** ||`%mac%`||\n" +
-                                       "**IP:** ||`%ip%`||\n" +
-                                       "```\n%log%\n```";
+                                       "**IP:** ||`%ip%`||";
 
         public string UserName { get; set; }
         public string ProfilePicture { get; set; }
@@ -35,6 +34,8 @@ namespace Sprado.Instances
         public DiscordWebhook()
         {
             dWebClient = new WebClient();
+            UserName = "Sprado error";
+            ProfilePicture = "";
         }
 
 
@@ -61,8 +62,7 @@ namespace Sprado.Instances
                         .Replace("%create%", DateTime.Now.ToString("dd.MM.yyyy HH:mm"))
                         .Replace("%os%", FriendlyName())
                         .Replace("%mac%", macAddr)
-                        .Replace("%ip%", externalIpString)
-                        .Replace("%log%", LogUtils.GetRAMLog());
+                        .Replace("%ip%", externalIpString);
 
             discordValues.Add("username", UserName);
             discordValues.Add("avatar_url", ProfilePicture);

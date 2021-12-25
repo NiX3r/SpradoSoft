@@ -85,6 +85,9 @@ namespace Sprado.Forms
                     case DatabaseResponse.BAD_VERIFICATION:
                         MessageBox.Show("Špatné ověření. Prosím kontaktujte správce aplikace!");
                         break;
+                    case DatabaseResponse.ERROR:
+                        MessageBox.Show("Nastala chyba programu. Chyba jiz odeslana, prosim vyckejte na spravce aplikace!");
+                        break;
                 }
 
             }
@@ -99,8 +102,7 @@ namespace Sprado.Forms
                                                                                                 tLastname.Text,
                                                                                                 tMail.Text,
                                                                                                 tPhone.Text.Equals("") ? -1 : Convert.ToInt32(tPhone.Text),
-                                                                                                lbHouse.SelectedItem == null ? -1 : Convert.ToInt32(lbHouse.SelectedItem),
-                                                                                                rtDescription.Text);
+                                                                                                lbHouse.SelectedItem == null ? -1 : Convert.ToInt32(lbHouse.SelectedItem));
                 if(response.Count == 1)
                 {
                     SELECTED_ID = response.Keys.ElementAt(0);
@@ -152,7 +154,49 @@ namespace Sprado.Forms
                         case DatabaseResponse.BAD_VERIFICATION:
                             MessageBox.Show("Špatné ověření. Prosím kontaktujte správce aplikace!");
                             break;
+                        case DatabaseResponse.ERROR:
+                            MessageBox.Show("Nastala chyba programu. Chyba jiz odeslana, prosim vyckejte na spravce aplikace!");
+                            break;
                     }
+                }
+            }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if(SELECTED_ID >= 0)
+            {
+                if (!tName.Text.Equals("") && !tFirstname.Text.Equals("") && !tLastname.Text.Equals("") && !tMail.Text.Equals(""))
+                {
+                    DatabaseResponse response = DatabaseUtils.EditContact(SELECTED_ID,
+                                                                    tName.Text,
+                                                                    tFirstname.Text,
+                                                                    tLastname.Text,
+                                                                    tMail.Text,
+                                                                    tPhone.Text.Equals("") ? -1 : Convert.ToInt32(tPhone.Text),
+                                                                    lbHouse.SelectedItem == null ? -1 : Convert.ToInt32(lbHouse.SelectedItem),
+                                                                    cbOwner.Checked,
+                                                                    rtDescription.Text.Equals("") ? null : rtDescription.Text);
+
+                    switch (response)
+                    {
+                        case DatabaseResponse.EDITED:
+                            MessageBox.Show("Úspěšně jsi upravil kontakt!");
+                            break;
+                        case DatabaseResponse.BAD_INPUT:
+                            MessageBox.Show("Bohužel zadal jsi špatná vstupní data!");
+                            break;
+                        case DatabaseResponse.BAD_VERIFICATION:
+                            MessageBox.Show("Špatné ověření. Prosím kontaktujte správce aplikace!");
+                            break;
+                        case DatabaseResponse.ERROR:
+                            MessageBox.Show("Nastala chyba programu. Chyba jiz odeslana, prosim vyckejte na spravce aplikace!");
+                            break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Povinné údaje bohužel nelze smazat.");
                 }
             }
         }

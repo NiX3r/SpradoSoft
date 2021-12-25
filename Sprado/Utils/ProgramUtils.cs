@@ -33,7 +33,7 @@ namespace Sprado.Utils
             long time = DateTime.Now.Ticks;
             LogUtils.Log("ERROR >> " + ex.Message);
             WEBHOOK.SendMessage(ex, lineNumber, caller, file, time);
-            MessageBox.Show($"Chyba!\nNeboj, kód chyby byl odeslán vývojáři. Vyřešíme ji co nejdříve budeme moct!\nČas chyby: {time}\n\nDěkujeme za strpení.");
+            MessageBox.Show($"Neboj, kód chyby byl odeslán vývojáři. Vyřešíme ji co nejdříve budeme moct!\nČas chyby: {time}\n\nDěkujeme za strpení.", "Chyba aplikace", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 

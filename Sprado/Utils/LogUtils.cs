@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -30,10 +31,11 @@ namespace Sprado
         public static void Log(string value, [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = "null", [CallerFilePath] string file = "null")
         {
             string line = $"\n[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}] {file.Substring(file.LastIndexOf('\\') + 1)}:{caller}:{lineNumber} » {value}";
+            Debug.WriteLine(line.Replace("\n", ""));
             log += line;
 
             index++;
-            if (index == 40)
+            if (index == 10)
             {
                 index = 0;
                 Save();
@@ -49,11 +51,6 @@ namespace Sprado
             writer.Write(log);
             writer.Flush();
             writer.Close();
-        }
-
-        public static string GetRAMLog()
-        {
-            return log;
         }
 
     }

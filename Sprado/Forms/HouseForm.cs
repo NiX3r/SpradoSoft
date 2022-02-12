@@ -13,6 +13,9 @@ namespace Sprado.Forms
 {
     public partial class HouseForm : Form
     {
+
+        private Dictionary<string, int> contacts = new Dictionary<string, int>();
+
         public HouseForm()
         {
             InitializeComponent();
@@ -27,6 +30,27 @@ namespace Sprado.Forms
             pictureBox4.Image = ProgramUtils.Images["search"];
             pictureBox5.Image = pictureBox6.Image = ProgramUtils.Images["send"];
 
+            listBox2.Items.Add("");
+
+            contacts = DatabaseUtils.GetContacts();
+
+            foreach(string s in contacts.Keys)
+            {
+                listBox1.Items.Add(s);
+            }
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            foreach(string s in contacts.Keys)
+            {
+                if (s.Contains(textBox6.Text))
+                {
+                    listBox1.Items.Add(s);
+                }
+            }
         }
     }
 }

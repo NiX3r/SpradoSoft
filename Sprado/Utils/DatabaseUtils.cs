@@ -230,5 +230,26 @@ namespace Sprado.Utils
 
         // END OF CONTACT FORM UTILS
 
+        // HOUSE FORM DATABASE UTILS
+
+        public static Dictionary<string, int> GetContacts()
+        {
+            
+            Dictionary<string,int> output = new Dictionary<string,int>();
+
+            var command = new MySqlCommand("SELECT ID,Firstname,Lastname FROM Contact;", connection);
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                output.Add(reader.GetString(1) + " " + reader.GetString(2), reader.GetInt32(0));
+            }
+            reader.Close();
+            return output;
+
+        }
+
+        // END OF HOUSE FORM UTILS
+
     }
 }

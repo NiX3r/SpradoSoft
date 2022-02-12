@@ -207,6 +207,7 @@ namespace Sprado.Forms
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(250, 15);
             this.textBox6.TabIndex = 18;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // listBox1
             // 

@@ -249,6 +249,50 @@ namespace Sprado.Utils
 
         }
 
+        public static DatabaseResponse AddHouse(string city, int zip, string street, int streetNo, int flats, int type, int owner, string description)
+        {
+
+            string lastEditStatus = "ADD";
+            int lastEditAuthor, createAuthor;
+            DateTime lastEditDate, createDate;
+            lastEditAuthor = createAuthor = Convert.ToInt32(ProgramUtils.LoggedUser["id"]);
+            lastEditDate = createDate = DateTime.Now;
+
+            string columns = "City, ZipCode, Street, StreetNo, Flats, Type, Owner, CreateAuthor, CreateDate, LastEditStatus, LastEditDate, LastEditAuthor, ";
+            string data = $"'{city}', {zip}, '{street}', {streetNo}, {flats}, {type}, {owner}, {createAuthor}, '{createDate.ToString("yyyy-MM-dd HH:mm:ss")}', '{lastEditStatus}', '{lastEditDate.ToString("yyyy-MM-dd HH:mm:ss")}', {lastEditAuthor}, ";
+
+            if (description != "")
+            {
+                columns += "Description, ";
+                data += $"'{description}', ";
+            }
+
+            columns = columns.Substring(0, columns.Length - 2);
+            data = data.Substring(0, data.Length - 2);
+
+            try
+            {
+                var command = new MySqlCommand($"INSERT INTO House({columns}) VALUES({data});", connection);
+                command.ExecuteNonQuery();
+                return DatabaseResponse.CREATED;
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+                return DatabaseResponse.ERROR;
+            }
+
+        }
+
+        public static Dictionary<int, Dictionary<string, object>> GetHouse(string address, int addressNo, string city, int zip, int ownerId)
+        {
+
+            Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string,object>>();
+
+            string cmd = "SELECT * FROM House"
+
+        }
+
         // END OF HOUSE FORM UTILS
 
     }

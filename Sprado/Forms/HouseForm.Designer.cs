@@ -130,6 +130,7 @@ namespace Sprado.Forms
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(87, 15);
             this.textBox4.TabIndex = 11;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // label4
             // 
@@ -152,6 +153,7 @@ namespace Sprado.Forms
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(97, 15);
             this.textBox2.TabIndex = 13;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // label2
             // 
@@ -174,6 +176,7 @@ namespace Sprado.Forms
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(97, 15);
             this.textBox5.TabIndex = 15;
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // label5
             // 
@@ -228,6 +231,10 @@ namespace Sprado.Forms
             this.listBox2.Font = new System.Drawing.Font("Nirmala UI", 8.25F);
             this.listBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.listBox2.FormattingEnabled = true;
+            this.listBox2.Items.AddRange(new object[] {
+            "SVJ",
+            "BD",
+            "Majitel"});
             this.listBox2.Location = new System.Drawing.Point(319, 166);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(97, 91);
@@ -275,6 +282,7 @@ namespace Sprado.Forms
             this.textBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.textBox7.Location = new System.Drawing.Point(444, 114);
             this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(289, 15);
             this.textBox7.TabIndex = 25;
             // 
@@ -297,6 +305,7 @@ namespace Sprado.Forms
             this.textBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.textBox9.Location = new System.Drawing.Point(444, 198);
             this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(289, 15);
             this.textBox9.TabIndex = 31;
             // 
@@ -319,6 +328,7 @@ namespace Sprado.Forms
             this.textBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.textBox10.Location = new System.Drawing.Point(444, 156);
             this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(289, 15);
             this.textBox10.TabIndex = 29;
             // 
@@ -341,6 +351,7 @@ namespace Sprado.Forms
             this.textBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.textBox8.Location = new System.Drawing.Point(441, 240);
             this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(289, 15);
             this.textBox8.TabIndex = 33;
             // 
@@ -439,6 +450,7 @@ namespace Sprado.Forms
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 37;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -450,6 +462,7 @@ namespace Sprado.Forms
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label17
             // 

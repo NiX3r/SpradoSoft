@@ -289,7 +289,37 @@ namespace Sprado.Utils
 
             Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string,object>>();
 
-            string cmd = "SELECT * FROM House"
+            string cmd = "SELECT * FROM House WHERE " +
+                         (address == "" ? "" : $"Street LIKE '%{address}%' AND ") +
+                         (addressNo >= 0 ? $"StreetNo={addressNo} AND " : "") +
+                         (city == "" ? "" : $"City LIKE '%{city}%' AND ") +
+                         (zip >= 0 ? $"ZipCode={zip} AND " : "") +
+                         (ownerId >= 0 ? $"Owner={ownerId} AND " : "");
+
+            if (cmd.Substring(cmd.Length - 5).Equals(" AND "))
+                cmd = cmd.Substring(0, cmd.Length - 5);
+            MessageBox.Show(cmd);
+            try
+            {
+                var command = new MySqlCommand(cmd, connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    Dictionary<string, object> data = new Dictionary<string, object>();
+                    for (int i = 1; i < reader.FieldCount; i++)
+                    {
+                        data.Add(reader.GetName(i), reader.GetValue(i));
+                    }
+                    response.Add(id, data);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+            }
+            return response;
 
         }
 

@@ -16,6 +16,8 @@ namespace Sprado.Forms
     {
 
         private Dictionary<string, int> contacts = new Dictionary<string, int>();
+        private int selectedId = -1;
+        private Dictionary<string, object> selectedData = new Dictionary<string, object>();
 
         public HouseForm()
         {
@@ -60,6 +62,25 @@ namespace Sprado.Forms
             }
         }
 
+        private void showData()
+        {
+            textBox1.Text = selectedData["Street"].ToString();
+            textBox2.Text = selectedData["StreetNo"].ToString();
+            textBox3.Text = selectedData["City"].ToString();
+            textBox4.Text = selectedData["ZipCode"].ToString();
+            textBox5.Text = selectedData["Flats"].ToString();
+            textBox10.Text = selectedData["CreateAuthor"].ToString();
+            textBox7.Text = ((DateTime)selectedData["CreateDate"]).ToString("yyyy-MM-dd HH:mm:ss");
+            textBox8.Text = selectedData["LastEditAuthor"].ToString();
+            textBox9.Text = ((DateTime)selectedData["LastEditDate"]).ToString("yyyy-MM-dd HH:mm:ss");
+            listBox2.SelectedIndex = (int)selectedData["Type"];
+            foreach(string item in contacts.Keys)
+            {
+                if(contacts[item] == (int)selectedData["Owner"])
+                    listBox1.SelectedItem = item;
+            }
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -68,7 +89,7 @@ namespace Sprado.Forms
                 string address = textBox1.Text, city = textBox3.Text, description = richTextBox1.Text;
                 int addressNo = Convert.ToInt32(textBox2.Text), zipCode = Convert.ToInt32(textBox4.Text), flatsCount = Convert.ToInt32(textBox5.Text), ownerId = contacts[listBox1.SelectedItem.ToString()], type = listBox2.SelectedIndex;
 
-                DatabaseResponse databaseResponse = DatabaseUtils.AddHouse(address, zipCode, description, zipCode, flatsCount, type, ownerId, description);
+                DatabaseResponse databaseResponse = DatabaseUtils.AddHouse(city, zipCode, address, zipCode, flatsCount, type, ownerId, description);
 
                 if(databaseResponse == DatabaseResponse.CREATED)
                 {
@@ -86,7 +107,35 @@ namespace Sprado.Forms
                 textBox4.Text.Length > 0 || (listBox1.SelectedItem != null))
             {
 
+                Dictionary<int, Dictionary<string, object>> response = DatabaseUtils.GetHouse(textBox1.Text,
+                                                                                              textBox2.Text == "" ? -1 : Convert.ToInt32(textBox2.Text),
+                                                                                              textBox3.Text,
+                                                                                              textBox4.Text == "" ? -1 : Convert.ToInt32(textBox4.Text),
+                                                                                              listBox1.SelectedItem == null ? -1 : contacts[listBox1.SelectedItem.ToString()]);
 
+                if (response.Count == 1)
+                {
+                    selectedId = response.Keys.ElementAt(0);
+                    selectedData = response[selectedId];
+                    showData();
+                }
+                else if (response.Count == 0)
+                {
+                    MessageBox.Show("Je nám líto, ale žádný kontakt s těmito kritérii neexistuje.\n\nTIP: Zkuste si zkontrolovat správnost kritérií.");
+                }
+                else if (response.Count <= 10)
+                {
+                    string data = "";
+                    foreach (Dictionary<string, object> item in response.Values)
+                    {
+                        data += $"\nAdresa: {item["Street"]} {item["StreetNo"]}, {item["City"]} {item["ZipCode"]}";
+                    }
+                    MessageBox.Show("Podle vyhledaných kritériích existuje " + response.Count + " počet domů. Prosím specifikujte kritéria, pro přesnější vyhledávání! Nalezlé domy: \n\n" + data);
+                }
+                else
+                {
+                    MessageBox.Show("Podle vyhledaných kritériích existuje " + response.Count + " počet domů. Prosím specifikujte kritéria, pro přesnější vyhledávání!");
+                }
 
             }
 

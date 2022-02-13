@@ -84,7 +84,8 @@ namespace Sprado.Forms
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
-            if(listBox1.SelectedItem != null && listBox2.SelectedItem != null)
+            if(listBox1.SelectedItem != null && listBox2.SelectedItem != null && textBox1.Text != "" &&
+               textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "")
             {
                 string address = textBox1.Text, city = textBox3.Text, description = richTextBox1.Text;
                 int addressNo = Convert.ToInt32(textBox2.Text), zipCode = Convert.ToInt32(textBox4.Text), flatsCount = Convert.ToInt32(textBox5.Text), ownerId = contacts[listBox1.SelectedItem.ToString()], type = listBox2.SelectedIndex;
@@ -172,6 +173,33 @@ namespace Sprado.Forms
 
             }
 
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem != null && listBox2.SelectedItem != null && textBox1.Text != "" &&
+               textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "")
+            {
+                string address = textBox1.Text, city = textBox3.Text, description = richTextBox1.Text;
+                int addressNo = Convert.ToInt32(textBox2.Text), zipCode = Convert.ToInt32(textBox4.Text), flatsCount = Convert.ToInt32(textBox5.Text), ownerId = contacts[listBox1.SelectedItem.ToString()], type = listBox2.SelectedIndex;
+
+                if (address.Equals(selectedData["Street"])) address = null;
+                if (city.Equals(selectedData["City"])) city = null;
+                if (description.Equals("Description")) description = null;
+                if (addressNo == (int)selectedData["StreetNo"]) addressNo = -1;
+                if (zipCode == (int)selectedData["ZipCode"]) zipCode = -1;
+                if (flatsCount == (int)selectedData["Flats"]) flatsCount = -1;
+                if (ownerId == (int)selectedData["Owner"]) ownerId = -1;
+                if (type == (int)selectedData["Type"]) type = -1;
+
+                DatabaseResponse databaseResponse = DatabaseUtils.EditHouse(selectedId, city, zipCode, address, zipCode, flatsCount, type, ownerId, description);
+
+                if (databaseResponse == DatabaseResponse.EDITED)
+                {
+                    MessageBox.Show("Dům úspěšně upraven.");
+                }
+
+            }
         }
     }
 }

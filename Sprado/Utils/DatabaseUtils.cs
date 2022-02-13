@@ -215,7 +215,10 @@ namespace Sprado.Utils
                                                (phone == -1 ? "" : $"Phone={phone},") +
                                                (house_id == -1 ? "" : $"House_ID={house_id},") +
                                                $"IsOwner={isOwner}," +
-                                               $"Description='{description}'" +
+                                               $"Description='{description}'," +
+                                               $"LastEditStatus='EDIT'," +
+                                               $"LastEditDate='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}'," +
+                                               $"LastEditAuthor={Convert.ToInt32(ProgramUtils.LoggedUser["id"])}" +
                                                $" WHERE ID={id};", connection);
                 command.ExecuteNonQuery();
                 response = DatabaseResponse.EDITED;
@@ -331,6 +334,38 @@ namespace Sprado.Utils
                 var command = new MySqlCommand($"DELETE FROM House WHERE ID={id};", connection);
                 command.ExecuteNonQuery();
                 response = DatabaseResponse.REMOVED;
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+                response = DatabaseResponse.ERROR;
+            }
+            return response;
+        }
+
+        public static DatabaseResponse EditHouse(int id, string city, int zip, string street, int streetNo, int flats, int type, int owner, string description)
+        {
+            DatabaseResponse response;
+            try
+            {
+
+                string cmd = "UPDATE House SET " +
+                             (city == null ? "" : $"City='{city}',") +
+                             (zip == -1 ? "" : $"ZipCode={zip},") +
+                             (street == null ? "" : $"Street='{street}',") +
+                             (streetNo == -1 ? "" : $"StreetNo={streetNo},") +
+                             (flats == -1 ? "" : $"Flats={flats},") +
+                             (type == -1 ? "" : $"Type={type},") +
+                             (owner == -1 ? "" : $"Owner={owner},") +
+                             (description == null ? "" : $"Description='{description}',");
+
+                cmd += $"LastEditStatus='EDIT'," +
+                       $"LastEditDate='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}'," +
+                       $"LastEditAuthor={Convert.ToInt32(ProgramUtils.LoggedUser["id"])} WHERE ID={id};";
+
+                var command = new MySqlCommand(cmd, connection);
+                command.ExecuteNonQuery();
+                response = DatabaseResponse.EDITED;
             }
             catch (Exception ex)
             {

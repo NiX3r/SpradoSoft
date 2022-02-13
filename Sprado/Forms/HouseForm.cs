@@ -140,5 +140,38 @@ namespace Sprado.Forms
             }
 
         }
+
+        private void clearData()
+        {
+            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = textBox6.Text = textBox7.Text = textBox8.Text = textBox9.Text = textBox10.Text = "";
+            selectedId = -1;
+            selectedData = new Dictionary<string, object>();
+            listBox1.SelectedItem = listBox2.SelectedItem = null;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+            if(selectedId >= 0)
+            {
+
+                if (MessageBox.Show("Opravdu si přejete odstranit tento dům?", "Odstranění dat", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    DatabaseResponse response = DatabaseUtils.RemoveHouse(selectedId);
+                    switch (response)
+                    {
+                        case DatabaseResponse.REMOVED:
+                            MessageBox.Show("Úspěšně jsi smazal kontakt!");
+                            clearData();
+                            break;
+                        case DatabaseResponse.ERROR:
+                            MessageBox.Show("Nastala chyba programu. Chyba jiz odeslana, prosim vyckejte na spravce aplikace!");
+                            break;
+                    }
+                }
+
+            }
+
+        }
     }
 }

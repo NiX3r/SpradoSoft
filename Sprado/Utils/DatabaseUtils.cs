@@ -379,7 +379,7 @@ namespace Sprado.Utils
 
         // REVISION MAN FORM DATABASE UTILS
 
-        public static DatabaseResponse AddRevisionMan(string company, string firstName, string lastName, int phone, string email, string description)
+        public static DatabaseResponse AddRevisionMan(string company, string firstname, string lastname, int phone, string email, string description)
         {
 
             string lastEditStatus = "ADD";
@@ -389,7 +389,7 @@ namespace Sprado.Utils
             lastEditDate = createDate = DateTime.Now;
 
             string columns = "Company, Firstname, Lastname, Phone, Email, CreateAuthor, CreateDate, LastEditStatus, LastEditDate, LastEditAuthor, ";
-            string data = $"'{company}', '{firstName}', '{lastName}', {phone}, '{email}', {createAuthor}, '{createDate.ToString("yyyy-MM-dd HH:mm:ss")}', '{lastEditStatus}', '{lastEditDate.ToString("yyyy-MM-dd HH:mm:ss")}', {lastEditAuthor}, ";
+            string data = $"'{company}', '{firstname}', '{lastname}', {phone}, '{email}', {createAuthor}, '{createDate.ToString("yyyy-MM-dd HH:mm:ss")}', '{lastEditStatus}', '{lastEditDate.ToString("yyyy-MM-dd HH:mm:ss")}', {lastEditAuthor}, ";
 
             if (description != "")
             {
@@ -411,6 +411,45 @@ namespace Sprado.Utils
                 ProgramUtils.ExceptionThrowned(ex);
                 return DatabaseResponse.ERROR;
             }
+
+        }
+
+        public static Dictionary<int, Dictionary<string, object>> GetRevisionMan(string company, string firstname, string lastname, string email, int phone)
+        {
+
+            Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string, object>>();
+
+            string cmd = "SELECT * FROM RevisionMan WHERE " +
+                         (company == "" ? "" : $"Company LIKE '%{company}%' AND ") +
+                         (phone >= 0 ? $"Phone={phone} AND " : "") +
+                         (firstname == "" ? "" : $"Firstname LIKE '%{firstname}%' AND ") +
+                         (lastname == "" ? "" : $"Lastname LIKE '%{lastname}%' AND ") +
+                         (email == "" ? "" : $"Email LIKE '%{email}%' AND ");
+
+            if (cmd.Substring(cmd.Length - 5).Equals(" AND "))
+                cmd = cmd.Substring(0, cmd.Length - 5);
+            MessageBox.Show(cmd);
+            try
+            {
+                var command = new MySqlCommand(cmd, connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    Dictionary<string, object> data = new Dictionary<string, object>();
+                    for (int i = 1; i < reader.FieldCount; i++)
+                    {
+                        data.Add(reader.GetName(i), reader.GetValue(i));
+                    }
+                    response.Add(id, data);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+            }
+            return response;
 
         }
 

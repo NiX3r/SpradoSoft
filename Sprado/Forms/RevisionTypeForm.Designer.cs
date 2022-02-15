@@ -146,6 +146,7 @@ namespace Sprado.Forms
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 71;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel1
             // 
@@ -284,9 +285,9 @@ namespace Sprado.Forms
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Location = new System.Drawing.Point(73, 149);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 17);
+            this.label6.Size = new System.Drawing.Size(89, 17);
             this.label6.TabIndex = 56;
-            this.label6.Text = "Majitel*";
+            this.label6.Text = "Roční ciklus*";
             // 
             // textBox1
             // 

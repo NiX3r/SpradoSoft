@@ -500,5 +500,44 @@ namespace Sprado.Utils
             return response;
         }
 
+        // END OF REVISION MAN UTILS
+
+        // REVISION TYPE FORM DATABASE UTILS
+
+        public static DatabaseResponse AddRevisionType(string name, int cicle, string description)
+        {
+
+            string lastEditStatus = "ADD";
+            int lastEditAuthor, createAuthor;
+            DateTime lastEditDate, createDate;
+            lastEditAuthor = createAuthor = Convert.ToInt32(ProgramUtils.LoggedUser["id"]);
+            lastEditDate = createDate = DateTime.Now;
+
+            string columns = "Name, YearLoop, CreateAuthor, CreateDate, LastEditStatus, LastEditDate, LastEditAuthor, ";
+            string data = $"'{name}', {cicle}, {createAuthor}, '{createDate.ToString("yyyy-MM-dd HH:mm:ss")}', '{lastEditStatus}', '{lastEditDate.ToString("yyyy-MM-dd HH:mm:ss")}', {lastEditAuthor}, ";
+
+            if (description != "")
+            {
+                columns += "Description, ";
+                data += $"'{description}', ";
+            }
+
+            columns = columns.Substring(0, columns.Length - 2);
+            data = data.Substring(0, data.Length - 2);
+
+            try
+            {
+                var command = new MySqlCommand($"INSERT INTO RevisionType({columns}) VALUES({data});", connection);
+                command.ExecuteNonQuery();
+                return DatabaseResponse.CREATED;
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+                return DatabaseResponse.ERROR;
+            }
+
+        }
+
     }
 }

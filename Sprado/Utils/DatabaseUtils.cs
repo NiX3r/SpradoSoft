@@ -504,7 +504,7 @@ namespace Sprado.Utils
 
         // REVISION TYPE FORM DATABASE UTILS
 
-        public static DatabaseResponse AddRevisionType(string name, int cicle, string description)
+        public static DatabaseResponse AddRevisionType(string name, int cycle, string description)
         {
 
             string lastEditStatus = "ADD";
@@ -514,7 +514,7 @@ namespace Sprado.Utils
             lastEditDate = createDate = DateTime.Now;
 
             string columns = "Name, YearLoop, CreateAuthor, CreateDate, LastEditStatus, LastEditDate, LastEditAuthor, ";
-            string data = $"'{name}', {cicle}, {createAuthor}, '{createDate.ToString("yyyy-MM-dd HH:mm:ss")}', '{lastEditStatus}', '{lastEditDate.ToString("yyyy-MM-dd HH:mm:ss")}', {lastEditAuthor}, ";
+            string data = $"'{name}', {cycle}, {createAuthor}, '{createDate.ToString("yyyy-MM-dd HH:mm:ss")}', '{lastEditStatus}', '{lastEditDate.ToString("yyyy-MM-dd HH:mm:ss")}', {lastEditAuthor}, ";
 
             if (description != "")
             {
@@ -539,14 +539,14 @@ namespace Sprado.Utils
 
         }
 
-        public static Dictionary<int, Dictionary<string, object>> GetRevisionType(string name, int cicle)
+        public static Dictionary<int, Dictionary<string, object>> GetRevisionType(string name, int cycle)
         {
 
             Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string, object>>();
 
             string cmd = "SELECT * FROM RevisionType WHERE " +
                          (name == "" ? "" : $"Name LIKE '%{name}%' AND ") +
-                         (cicle >= 0 ? $"YearLoop={cicle} AND " : "");
+                         (cycle >= 0 ? $"YearLoop={cycle} AND " : "");
 
             if (cmd.Substring(cmd.Length - 5).Equals(" AND "))
                 cmd = cmd.Substring(0, cmd.Length - 5);
@@ -583,6 +583,33 @@ namespace Sprado.Utils
                 var command = new MySqlCommand($"DELETE FROM RevisionType WHERE ID={id};", connection);
                 command.ExecuteNonQuery();
                 response = DatabaseResponse.REMOVED;
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+                response = DatabaseResponse.ERROR;
+            }
+            return response;
+        }
+
+        public static DatabaseResponse EditRevisionType(int id, string name, int cycle, string description)
+        {
+            DatabaseResponse response;
+            try
+            {
+
+                string cmd = "UPDATE RevisionType SET " +
+                             (name == "" ? "" : $"Name='{name}',") +
+                             (cycle == -1 ? "" : $"YearLoop={cycle},") +
+                             (description == "" ? "" : $"Description='{description}',");
+
+                cmd += $"LastEditStatus='EDIT'," +
+                       $"LastEditDate='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}'," +
+                       $"LastEditAuthor={Convert.ToInt32(ProgramUtils.LoggedUser["id"])} WHERE ID={id};";
+
+                var command = new MySqlCommand(cmd, connection);
+                command.ExecuteNonQuery();
+                response = DatabaseResponse.EDITED;
             }
             catch (Exception ex)
             {

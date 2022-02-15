@@ -128,5 +128,29 @@ namespace Sprado.Forms
             }
 
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+            if (textBox1.Text.Length > 0 || textBox6.Text.Length > 0)
+            {
+
+                string name = textBox1.Text, description = richTextBox1.Text;
+                int cycle = Convert.ToInt32(textBox6.Text);
+
+                if (name == selectedData["Name"].ToString()) name = "";
+                if (cycle == (int)selectedData["YearLoop"]) cycle = -1;
+                if (description == selectedData["Description"].ToString()) description = "";
+
+                DatabaseResponse databaseResponse = DatabaseUtils.EditRevisionType(selectedId, name, cycle, description);
+
+                if (databaseResponse == DatabaseResponse.EDITED)
+                {
+                    MessageBox.Show("Typ revize úspěšně upraven.");
+                }
+
+            }
+
+        }
     }
 }

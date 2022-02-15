@@ -539,5 +539,41 @@ namespace Sprado.Utils
 
         }
 
+        public static Dictionary<int, Dictionary<string, object>> GetRevisionType(string name, int cicle)
+        {
+
+            Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string, object>>();
+
+            string cmd = "SELECT * FROM RevisionType WHERE " +
+                         (name == "" ? "" : $"Name LIKE '%{name}%' AND ") +
+                         (cicle >= 0 ? $"YearLoop={cicle} AND " : "");
+
+            if (cmd.Substring(cmd.Length - 5).Equals(" AND "))
+                cmd = cmd.Substring(0, cmd.Length - 5);
+            MessageBox.Show(cmd);
+            try
+            {
+                var command = new MySqlCommand(cmd, connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    Dictionary<string, object> data = new Dictionary<string, object>();
+                    for (int i = 1; i < reader.FieldCount; i++)
+                    {
+                        data.Add(reader.GetName(i), reader.GetValue(i));
+                    }
+                    response.Add(id, data);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+            }
+            return response;
+
+        }
+
     }
 }

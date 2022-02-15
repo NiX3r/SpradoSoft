@@ -377,5 +377,42 @@ namespace Sprado.Utils
 
         // END OF HOUSE FORM UTILS
 
+        // REVISION MAN FORM DATABASE UTILS
+
+        public static DatabaseResponse AddRevisionMan(string company, string firstName, string lastName, int phone, string email, string description)
+        {
+
+            string lastEditStatus = "ADD";
+            int lastEditAuthor, createAuthor;
+            DateTime lastEditDate, createDate;
+            lastEditAuthor = createAuthor = Convert.ToInt32(ProgramUtils.LoggedUser["id"]);
+            lastEditDate = createDate = DateTime.Now;
+
+            string columns = "Company, Firstname, Lastname, Phone, Email, CreateAuthor, CreateDate, LastEditStatus, LastEditDate, LastEditAuthor, ";
+            string data = $"'{company}', '{firstName}', '{lastName}', {phone}, '{email}', {createAuthor}, '{createDate.ToString("yyyy-MM-dd HH:mm:ss")}', '{lastEditStatus}', '{lastEditDate.ToString("yyyy-MM-dd HH:mm:ss")}', {lastEditAuthor}, ";
+
+            if (description != "")
+            {
+                columns += "Description, ";
+                data += $"'{description}', ";
+            }
+
+            columns = columns.Substring(0, columns.Length - 2);
+            data = data.Substring(0, data.Length - 2);
+
+            try
+            {
+                var command = new MySqlCommand($"INSERT INTO RevisionMan({columns}) VALUES({data});", connection);
+                command.ExecuteNonQuery();
+                return DatabaseResponse.CREATED;
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+                return DatabaseResponse.ERROR;
+            }
+
+        }
+
     }
 }

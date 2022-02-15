@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sprado.Enums.DatabaseMethodResponseEnum;
 
 namespace Sprado.Forms
 {
@@ -25,6 +26,40 @@ namespace Sprado.Forms
             pictureBox3.Image = ProgramUtils.Images["edit"];
             pictureBox4.Image = ProgramUtils.Images["search"];
             pictureBox5.Image = ProgramUtils.Images["send"];
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            if(textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" &&
+               textBox4.Text != "" && textBox6.Text != "")
+            {
+
+                DatabaseResponse response = DatabaseUtils.AddRevisionMan(textBox1.Text, 
+                                                                         textBox2.Text, 
+                                                                         textBox3.Text, 
+                                                                         Convert.ToInt32(textBox4.Text), 
+                                                                         textBox6.Text, 
+                                                                         richTextBox1.Text);
+                if(response == DatabaseResponse.CREATED)
+                {
+                    MessageBox.Show("Revizák úspěšně vytvořen");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Prosím vyplň potřebné údaje označené *");
+            }
+
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

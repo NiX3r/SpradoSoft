@@ -470,5 +470,35 @@ namespace Sprado.Utils
             return response;
         }
 
+        public static DatabaseResponse EditRevisionMan(int id, string company, string firstname, string lastname, int phone, string email, string description)
+        {
+            DatabaseResponse response;
+            try
+            {
+
+                string cmd = "UPDATE RevisionMan SET " +
+                             (company == "" ? "" : $"Company='{company}',") +
+                             (firstname == "" ? "" : $"Firstname='{firstname}',") +
+                             (lastname == "" ? "" : $"Lastname='{lastname}',") +
+                             (phone == -1 ? "" : $"Phone={phone},") +
+                             (email == "" ? "" : $"Email='{email}',") +
+                             (description == "" ? "" : $"Description='{description}',");
+
+                cmd += $"LastEditStatus='EDIT'," +
+                       $"LastEditDate='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}'," +
+                       $"LastEditAuthor={Convert.ToInt32(ProgramUtils.LoggedUser["id"])} WHERE ID={id};";
+
+                var command = new MySqlCommand(cmd, connection);
+                command.ExecuteNonQuery();
+                response = DatabaseResponse.EDITED;
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+                response = DatabaseResponse.ERROR;
+            }
+            return response;
+        }
+
     }
 }

@@ -152,5 +152,39 @@ namespace Sprado.Forms
 
             }
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" &&
+               textBox4.Text != "" && textBox6.Text != "")
+            {
+                
+                string company = textBox1.Text, firstname = textBox2.Text, lastname = textBox3.Text, email = textBox6.Text, description = richTextBox1.Text;
+                int phone = Convert.ToInt32(textBox4.Text);
+
+                if (company == selectedData["Company"].ToString()) company = "";
+                if (firstname == selectedData["Firstname"].ToString()) firstname = "";
+                if (lastname == selectedData["Lastname"].ToString()) lastname = "";
+                if (email == selectedData["Email"].ToString()) email = "";
+                if (description == selectedData["Description"].ToString()) description = "";
+                if (phone == (int)selectedData["Phone"]) phone = -1;
+
+                DatabaseResponse response = DatabaseUtils.EditRevisionMan(selectedId, 
+                                                                          company, 
+                                                                          firstname, 
+                                                                          lastname, 
+                                                                          phone, 
+                                                                          email, 
+                                                                          description);
+
+                if(response == DatabaseResponse.EDITED)
+                {
+                    MessageBox.Show("Úspěšně jsi upravil revizáka.");
+                }
+
+            }
+
+        }
     }
 }

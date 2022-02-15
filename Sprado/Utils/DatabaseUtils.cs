@@ -453,5 +453,22 @@ namespace Sprado.Utils
 
         }
 
+        public static DatabaseResponse RemoveRevisionMan(int id)
+        {
+            DatabaseResponse response;
+            try
+            {
+                var command = new MySqlCommand($"DELETE FROM RevisionMan WHERE ID={id};", connection);
+                command.ExecuteNonQuery();
+                response = DatabaseResponse.REMOVED;
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+                response = DatabaseResponse.ERROR;
+            }
+            return response;
+        }
+
     }
 }

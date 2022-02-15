@@ -129,5 +129,28 @@ namespace Sprado.Forms
             }
 
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (selectedId >= 0)
+            {
+
+                if (MessageBox.Show("Opravdu si přejete odstranit tohoto revizáka?", "Odstranění dat", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    DatabaseResponse response = DatabaseUtils.RemoveRevisionMan(selectedId);
+                    switch (response)
+                    {
+                        case DatabaseResponse.REMOVED:
+                            MessageBox.Show("Úspěšně jsi smazal revizáka!");
+                            clearData();
+                            break;
+                        case DatabaseResponse.ERROR:
+                            MessageBox.Show("Nastala chyba programu. Chyba jiz odeslana, prosim vyckejte na spravce aplikace!");
+                            break;
+                    }
+                }
+
+            }
+        }
     }
 }

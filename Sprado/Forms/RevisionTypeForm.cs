@@ -106,5 +106,27 @@ namespace Sprado.Forms
             }
 
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+            if(selectedId >= 0)
+            {
+
+                if (MessageBox.Show("Opravdu si přejete odstranit tento typ revize?", "Odstranění dat", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    DatabaseResponse response = DatabaseUtils.RemoveRevisionType(selectedId);
+                    switch (response)
+                    {
+                        case DatabaseResponse.REMOVED:
+                            MessageBox.Show("Úspěšně jsi smazal kontakt!");
+                            clearData();
+                            break;
+                    }
+                }
+
+            }
+
+        }
     }
 }

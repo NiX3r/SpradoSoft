@@ -13,6 +13,12 @@ namespace Sprado.Forms
 {
     public partial class RevisionForm : Form
     {
+
+
+        private int selectedId = -1;
+        private Dictionary<string, object> selectedData = new Dictionary<string, object>();
+        private Dictionary<string, int> houses = new Dictionary<string, int>(), types = new Dictionary<string, int>(), revisionMan = new Dictionary<string, int>();
+
         public RevisionForm()
         {
             InitializeComponent();
@@ -21,9 +27,9 @@ namespace Sprado.Forms
         private void RevisionForm_Load(object sender, EventArgs e)
         {
             pictureBox1.Image = ProgramUtils.Images["add"];
-            pictureBox2.Image = ProgramUtils.Images["remove"];
-            pictureBox3.Image = ProgramUtils.Images["edit"];
-            pictureBox4.Image = ProgramUtils.Images["search"];
+            pictureBox3.Image = ProgramUtils.Images["remove"];
+            pictureBox4.Image = ProgramUtils.Images["edit"];
+            pictureBox2.Image = ProgramUtils.Images["search"];
         }
     }
 }

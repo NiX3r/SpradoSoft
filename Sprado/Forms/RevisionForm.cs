@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sprado.Enums.DatabaseMethodResponseEnum;
 
 namespace Sprado.Forms
 {
@@ -17,7 +18,157 @@ namespace Sprado.Forms
 
         private int selectedId = -1;
         private Dictionary<string, object> selectedData = new Dictionary<string, object>();
-        private Dictionary<string, int> houses = new Dictionary<string, int>(), types = new Dictionary<string, int>(), revisionMan = new Dictionary<string, int>();
+        private Dictionary<int, string> houses = new Dictionary<int, string>(), types = new Dictionary<int, string>(), revisionMen = new Dictionary<int, string>();
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            foreach(string item in houses.Values)
+            {
+                if (item.Contains(textBox6.Text))
+                    listBox1.Items.Add(item);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            listBox2.Items.Clear();
+            foreach (string item in types.Values)
+            {
+                if (item.Contains(textBox1.Text))
+                    listBox2.Items.Add(item);
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            listBox3.Items.Clear();
+            foreach (string item in revisionMen.Values)
+            {
+                if (item.Contains(textBox2.Text))
+                    listBox3.Items.Add(item);
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            if(listBox1.SelectedItem != null && 
+               listBox2.SelectedItem != null &&
+               listBox3.SelectedItem != null)
+            {
+
+                int houseId = -1, typeId = -1, manId = -1;
+
+                foreach(int item in houses.Keys)
+                {
+                    if (listBox1.SelectedItem.ToString().Equals(houses[item]))
+                        houseId = item;
+
+                }
+                foreach (int item in types.Keys)
+                {
+                    if (listBox2.SelectedItem.ToString().Equals(types[item]))
+                        typeId = item;
+
+                }
+                foreach (int item in revisionMen.Keys)
+                {
+                    if (listBox3.SelectedItem.ToString().Equals(revisionMen[item]))
+                        manId = item;
+
+                }
+
+                DatabaseResponse response = DatabaseUtils.AddRevision(houseId,
+                                                                      typeId, 
+                                                                      manId,     
+                                                                      dateTimePicker1.Value,
+                                                                      richTextBox1.Text);
+
+                if(response == DatabaseResponse.CREATED)
+                {
+                    MessageBox.Show("Úspěšně jsi zapsal revizi.");
+                }
+
+            }
+
+        }
+
+        private void showData()
+        {
+            textBox10.Text = selectedData["CreateAuthor"].ToString();
+            textBox7.Text = ((DateTime)selectedData["CreateDate"]).ToString("yyyy-MM-dd HH:mm:ss");
+            textBox8.Text = selectedData["LastEditAuthor"].ToString();
+            textBox9.Text = ((DateTime)selectedData["LastEditDate"]).ToString("yyyy-MM-dd HH:mm:ss");
+            listBox1.SelectedItem = houses[(int)selectedData["House_ID"]];
+            listBox2.SelectedItem = types[(int)selectedData["RevisionType_ID"]];
+            listBox3.SelectedItem = revisionMen[(int)selectedData["RevisionMan_ID"]];
+            dateTimePicker1.Value = (DateTime)selectedData["LastDate"];
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+            int houseId = -1, typeId = -1, manId = -1;
+
+            if(listBox1.SelectedItem != null)
+            {
+                foreach (int item in houses.Keys)
+                {
+                    if (listBox1.SelectedItem.ToString().Equals(houses[item]))
+                        houseId = item;
+
+                }
+            }
+            if(listBox2.SelectedItem != null)
+            {
+                foreach (int item in types.Keys)
+                {
+                    if (listBox2.SelectedItem.ToString().Equals(types[item]))
+                        typeId = item;
+
+                }
+            }
+            if(listBox3.SelectedItem != null)
+            {
+                foreach (int item in revisionMen.Keys)
+                {
+                    if (listBox3.SelectedItem.ToString().Equals(revisionMen[item]))
+                        manId = item;
+
+                }
+            }
+
+            Dictionary<int, Dictionary<string, object>> response = DatabaseUtils.GetRevision(listBox1.SelectedItem == null ? -1 : houseId,
+                                                                                             listBox2.SelectedItem == null ? -1 : typeId,
+                                                                                             listBox3.SelectedItem == null ? -1 : manId,
+                                                                                             dateTimePicker1.Value, checkBox1.Checked);
+
+            if (response.Count == 1)
+            {
+                selectedId = response.Keys.ElementAt(0);
+                selectedData = response[selectedId];
+                showData();
+            }
+            else if (response.Count == 0)
+            {
+                MessageBox.Show("Je nám líto, ale žádná revize s těmito kritérii neexistuje.\n\nTIP: Zkuste si zkontrolovat správnost kritérií.");
+            }
+            else if (response.Count <= 10)
+            {
+                string data = "";
+                foreach (Dictionary<string, object> item in response.Values)
+                {
+                    data += $"\n{houses[(int)item["House_ID"]]}, {types[(int)item["RevisionType_ID"]]}, {((DateTime)item["LastDate"]).ToString("D")}";
+                }
+                MessageBox.Show("Podle vyhledaných kritériích existuje " + response.Count + " počet domů. Prosím specifikujte kritéria, pro přesnější vyhledávání! Nalezlé domy: \n\n" + data);
+            }
+            else
+            {
+                MessageBox.Show("Podle vyhledaných kritériích existuje " + response.Count + " počet domů. Prosím specifikujte kritéria, pro přesnější vyhledávání!");
+            }
+
+        }
 
         public RevisionForm()
         {
@@ -33,19 +184,19 @@ namespace Sprado.Forms
 
             houses = DatabaseUtils.GetHouses();
             types = DatabaseUtils.GetRevisionTypes();
-            revisionMan = DatabaseUtils.GetRevisionMen();
+            revisionMen = DatabaseUtils.GetRevisionMen();
 
-            foreach(string item in houses.Keys)
+            foreach(string item in houses.Values)
             {
                 listBox1.Items.Add(item);
             }
 
-            foreach (string item in types.Keys)
+            foreach (string item in types.Values)
             {
                 listBox2.Items.Add(item);
             }
 
-            foreach (string item in revisionMan.Keys)
+            foreach (string item in revisionMen.Values)
             {
                 listBox3.Items.Add(item);
             }

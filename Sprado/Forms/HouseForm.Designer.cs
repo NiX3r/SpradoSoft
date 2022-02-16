@@ -496,7 +496,7 @@ namespace Sprado.Forms
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(90, 41);
             this.label18.TabIndex = 86;
-            this.label18.Text = "Poslat mail majitelům";
+            this.label18.Text = "Poslat mail vlastníkům";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox6

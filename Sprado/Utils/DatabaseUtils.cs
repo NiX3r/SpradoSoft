@@ -623,54 +623,127 @@ namespace Sprado.Utils
 
         // REVISION FORM DATABASE
 
-        public static Dictionary<string, int> GetHouses()
+        public static Dictionary<int, string> GetHouses()
         {
 
-            Dictionary<string, int> output = new Dictionary<string, int>();
+            Dictionary<int, string> output = new Dictionary<int, string>();
 
             var command = new MySqlCommand("SELECT ID,Street,StreetNo FROM House;", connection);
             var reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                output.Add(reader.GetString(1) + " " + reader.GetInt32(2), reader.GetInt32(0));
+                output.Add(reader.GetInt32(0), reader.GetString(1) + " " + reader.GetInt32(2));
             }
             reader.Close();
             return output;
 
         }
 
-        public static Dictionary<string, int> GetRevisionTypes()
+        public static Dictionary<int, string> GetRevisionTypes()
         {
 
-            Dictionary<string, int> output = new Dictionary<string, int>();
+            Dictionary<int, string> output = new Dictionary<int, string>();
 
             var command = new MySqlCommand("SELECT ID,Name FROM RevisionType;", connection);
             var reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                output.Add(reader.GetString(1), reader.GetInt32(0));
+                output.Add(reader.GetInt32(0), reader.GetString(1));
             }
             reader.Close();
             return output;
 
         }
 
-        public static Dictionary<string, int> GetRevisionMen()
+        public static Dictionary<int, string> GetRevisionMen()
         {
 
-            Dictionary<string, int> output = new Dictionary<string, int>();
+            Dictionary<int, string> output = new Dictionary<int, string>();
 
             var command = new MySqlCommand("SELECT ID,Firstname,Lastname FROM RevisionMan;", connection);
             var reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                output.Add(reader.GetString(1) + " " + reader.GetString(2), reader.GetInt32(0));
+                output.Add(reader.GetInt32(0), reader.GetString(1) + " " + reader.GetString(2));
             }
             reader.Close();
             return output;
+
+        }
+
+        public static DatabaseResponse AddRevision(int houseId, int revisionTypeId, int revisionManId, DateTime lastDate, string description)
+        {
+
+            string lastEditStatus = "ADD";
+            int lastEditAuthor, createAuthor;
+            DateTime lastEditDate, createDate;
+            lastEditAuthor = createAuthor = Convert.ToInt32(ProgramUtils.LoggedUser["id"]);
+            lastEditDate = createDate = DateTime.Now;
+
+            string columns = "RevisionMan_ID, RevisionType_ID, House_ID, LastDate, CreateAuthor, CreateDate, LastEditStatus, LastEditDate, LastEditAuthor, ";
+            string data = $"{revisionManId}, {revisionTypeId}, {houseId}, '{lastDate.ToString("yyyy-MM-dd")}', {createAuthor}, '{createDate.ToString("yyyy-MM-dd HH:mm:ss")}', '{lastEditStatus}', '{lastEditDate.ToString("yyyy-MM-dd HH:mm:ss")}', {lastEditAuthor}, ";
+
+            if (description != "")
+            {
+                columns += "Description, ";
+                data += $"'{description}', ";
+            }
+
+            columns = columns.Substring(0, columns.Length - 2);
+            data = data.Substring(0, data.Length - 2);
+
+            try
+            {
+                var command = new MySqlCommand($"INSERT INTO Revision({columns}) VALUES({data});", connection);
+                command.ExecuteNonQuery();
+                return DatabaseResponse.CREATED;
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+                return DatabaseResponse.ERROR;
+            }
+
+        }
+
+        public static Dictionary<int, Dictionary<string, object>> GetRevision(int houseId, int typeId, int manId, DateTime lastDate, bool useDate)
+        {
+
+            Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string, object>>();
+
+            string cmd = "SELECT * FROM Revision WHERE " +
+                         (houseId == -1 ? "" : $"House_ID={houseId} AND ") +
+                         (typeId == -1 ? "" : $"RevisionType_ID={typeId} AND ") +
+                         (manId == -1 ? "" : $"RevisionMan_ID={manId} AND ") +
+                         (useDate ? $"LastDate='{lastDate.ToString("yyyy-MM-dd")}' AND " : "");
+
+            if (cmd.Substring(cmd.Length - 5).Equals(" AND "))
+                cmd = cmd.Substring(0, cmd.Length - 5);
+            MessageBox.Show(cmd);
+            try
+            {
+                var command = new MySqlCommand(cmd, connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    Dictionary<string, object> data = new Dictionary<string, object>();
+                    for (int i = 1; i < reader.FieldCount; i++)
+                    {
+                        data.Add(reader.GetName(i), reader.GetValue(i));
+                    }
+                    response.Add(id, data);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+            }
+            return response;
 
         }
 

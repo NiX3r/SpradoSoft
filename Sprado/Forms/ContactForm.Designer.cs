@@ -461,9 +461,9 @@ namespace Sprado.Forms
             this.cbOwner.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cbOwner.Location = new System.Drawing.Point(337, 229);
             this.cbOwner.Name = "cbOwner";
-            this.cbOwner.Size = new System.Drawing.Size(76, 21);
+            this.cbOwner.Size = new System.Drawing.Size(83, 21);
             this.cbOwner.TabIndex = 127;
-            this.cbOwner.Text = "Majitel*";
+            this.cbOwner.Text = "Vlastnik*";
             this.cbOwner.UseVisualStyleBackColor = true;
             // 
             // ContactForm

@@ -58,6 +58,9 @@ namespace Sprado.Forms
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -129,6 +132,7 @@ namespace Sprado.Forms
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 115;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label13
             // 
@@ -151,6 +155,7 @@ namespace Sprado.Forms
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 113;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel1
             // 
@@ -166,7 +171,7 @@ namespace Sprado.Forms
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox8.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox8.Location = new System.Drawing.Point(451, 189);
+            this.textBox8.Location = new System.Drawing.Point(448, 241);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(289, 15);
             this.textBox8.TabIndex = 111;
@@ -176,7 +181,7 @@ namespace Sprado.Forms
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label10.Location = new System.Drawing.Point(474, 167);
+            this.label10.Location = new System.Drawing.Point(471, 219);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(108, 17);
             this.label10.TabIndex = 110;
@@ -188,7 +193,7 @@ namespace Sprado.Forms
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox9.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox9.Location = new System.Drawing.Point(451, 147);
+            this.textBox9.Location = new System.Drawing.Point(448, 199);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(289, 15);
             this.textBox9.TabIndex = 109;
@@ -198,7 +203,7 @@ namespace Sprado.Forms
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label11.Location = new System.Drawing.Point(477, 125);
+            this.label11.Location = new System.Drawing.Point(474, 177);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(107, 17);
             this.label11.TabIndex = 108;
@@ -210,7 +215,7 @@ namespace Sprado.Forms
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox10.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox10.Location = new System.Drawing.Point(451, 105);
+            this.textBox10.Location = new System.Drawing.Point(448, 157);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(289, 15);
             this.textBox10.TabIndex = 107;
@@ -220,7 +225,7 @@ namespace Sprado.Forms
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label12.Location = new System.Drawing.Point(477, 83);
+            this.label12.Location = new System.Drawing.Point(474, 135);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(57, 17);
             this.label12.TabIndex = 106;
@@ -232,7 +237,7 @@ namespace Sprado.Forms
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox7.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox7.Location = new System.Drawing.Point(451, 63);
+            this.textBox7.Location = new System.Drawing.Point(448, 115);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(289, 15);
             this.textBox7.TabIndex = 105;
@@ -242,7 +247,7 @@ namespace Sprado.Forms
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label9.Location = new System.Drawing.Point(477, 41);
+            this.label9.Location = new System.Drawing.Point(474, 93);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 17);
             this.label9.TabIndex = 104;
@@ -281,6 +286,7 @@ namespace Sprado.Forms
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(115, 15);
             this.textBox6.TabIndex = 99;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label6
             // 
@@ -315,6 +321,7 @@ namespace Sprado.Forms
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(115, 15);
             this.textBox1.TabIndex = 127;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -349,6 +356,7 @@ namespace Sprado.Forms
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(115, 15);
             this.textBox2.TabIndex = 130;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label2
             // 
@@ -373,12 +381,47 @@ namespace Sprado.Forms
             this.listBox3.Size = new System.Drawing.Size(115, 169);
             this.listBox3.TabIndex = 128;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label3.Location = new System.Drawing.Point(471, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(176, 17);
+            this.label3.TabIndex = 131;
+            this.label3.Text = "Poslední provedená revize*";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
+            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.dateTimePicker1.Location = new System.Drawing.Point(448, 56);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(292, 20);
+            this.dateTimePicker1.TabIndex = 132;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.checkBox1.Location = new System.Drawing.Point(648, 37);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(92, 17);
+            this.checkBox1.TabIndex = 133;
+            this.checkBox1.Text = "hledat podle";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // RevisionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(785, 561);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox3);
@@ -450,5 +493,8 @@ namespace Sprado.Forms
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

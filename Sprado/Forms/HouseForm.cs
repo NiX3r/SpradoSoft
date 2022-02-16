@@ -28,9 +28,9 @@ namespace Sprado.Forms
         {
 
             pictureBox1.Image = ProgramUtils.Images["add"];
-            pictureBox2.Image = ProgramUtils.Images["remove"];
-            pictureBox3.Image = ProgramUtils.Images["edit"];
-            pictureBox4.Image = ProgramUtils.Images["search"];
+            pictureBox3.Image = ProgramUtils.Images["remove"];
+            pictureBox4.Image = ProgramUtils.Images["edit"];
+            pictureBox2.Image = ProgramUtils.Images["search"];
             pictureBox5.Image = pictureBox6.Image = ProgramUtils.Images["send"];
 
             contacts = DatabaseUtils.GetContacts();

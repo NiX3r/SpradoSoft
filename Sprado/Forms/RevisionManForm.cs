@@ -26,10 +26,9 @@ namespace Sprado.Forms
         private void RevisionManForm_Load(object sender, EventArgs e)
         {
             pictureBox1.Image = ProgramUtils.Images["add"];
-            pictureBox2.Image = ProgramUtils.Images["remove"];
-            pictureBox3.Image = ProgramUtils.Images["edit"];
-            pictureBox4.Image = ProgramUtils.Images["search"];
-            pictureBox5.Image = ProgramUtils.Images["send"];
+            pictureBox3.Image = ProgramUtils.Images["remove"];
+            pictureBox4.Image = ProgramUtils.Images["edit"];
+            pictureBox2.Image = ProgramUtils.Images["search"];
         }
 
         private void showData()

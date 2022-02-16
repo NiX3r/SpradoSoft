@@ -619,5 +619,60 @@ namespace Sprado.Utils
             return response;
         }
 
+        // END OF REVISION TYPE UTILS
+
+        // REVISION FORM DATABASE
+
+        public static Dictionary<string, int> GetHouses()
+        {
+
+            Dictionary<string, int> output = new Dictionary<string, int>();
+
+            var command = new MySqlCommand("SELECT ID,Street,StreetNo FROM House;", connection);
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                output.Add(reader.GetString(1) + " " + reader.GetInt32(2), reader.GetInt32(0));
+            }
+            reader.Close();
+            return output;
+
+        }
+
+        public static Dictionary<string, int> GetRevisionTypes()
+        {
+
+            Dictionary<string, int> output = new Dictionary<string, int>();
+
+            var command = new MySqlCommand("SELECT ID,Name FROM RevisionType;", connection);
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                output.Add(reader.GetString(1), reader.GetInt32(0));
+            }
+            reader.Close();
+            return output;
+
+        }
+
+        public static Dictionary<string, int> GetRevisionMen()
+        {
+
+            Dictionary<string, int> output = new Dictionary<string, int>();
+
+            var command = new MySqlCommand("SELECT ID,Firstname,Lastname FROM RevisionMan;", connection);
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                output.Add(reader.GetString(1) + " " + reader.GetString(2), reader.GetInt32(0));
+            }
+            reader.Close();
+            return output;
+
+        }
+
     }
 }

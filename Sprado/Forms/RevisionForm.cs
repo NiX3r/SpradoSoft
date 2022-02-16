@@ -30,6 +30,26 @@ namespace Sprado.Forms
             pictureBox3.Image = ProgramUtils.Images["remove"];
             pictureBox4.Image = ProgramUtils.Images["edit"];
             pictureBox2.Image = ProgramUtils.Images["search"];
+
+            houses = DatabaseUtils.GetHouses();
+            types = DatabaseUtils.GetRevisionTypes();
+            revisionMan = DatabaseUtils.GetRevisionMen();
+
+            foreach(string item in houses.Keys)
+            {
+                listBox1.Items.Add(item);
+            }
+
+            foreach (string item in types.Keys)
+            {
+                listBox2.Items.Add(item);
+            }
+
+            foreach (string item in revisionMan.Keys)
+            {
+                listBox3.Items.Add(item);
+            }
+
         }
     }
 }

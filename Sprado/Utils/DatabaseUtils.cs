@@ -33,6 +33,7 @@ namespace Sprado.Utils
 
         public static bool ExistsUser(string email)
         {
+            email = email.Replace("'", "");
             bool result = false;
             try
             {
@@ -57,6 +58,10 @@ namespace Sprado.Utils
 
         public static bool CreateUser(string firstName, string lastName, string email, int phone, string password)
         {
+            firstName = firstName.Replace("'", "");
+            lastName = lastName.Replace("'","");
+            email = email.Replace("'", "");
+            password = password.Replace("'", "");
             bool success = false;
             LogUtils.Log("Start create user email: " + email);
             try
@@ -75,6 +80,8 @@ namespace Sprado.Utils
 
         public static Dictionary<string, object> GetUser(string email, string password)
         {
+            email = email.Replace("'", "");
+            password = password.Replace("'", "");
             Dictionary<string, object> result = null;
             try
             {
@@ -102,6 +109,11 @@ namespace Sprado.Utils
 
         public static DatabaseResponse AddContact(string name, string firstname, string lastname, string mail, int phone, int house_id, bool isOwner, string description)
         {
+            name = name.Replace("'", "");
+            firstname = firstname.Replace("'", "");
+            lastname = lastname.Replace("'", "");
+            mail = mail.Replace("'", "");
+            description = description.Replace("'", "");
             string lastEditStatus = "ADD";
             int lastEditAuthor, createAuthor;
             DateTime lastEditDate, createDate;
@@ -151,6 +163,10 @@ namespace Sprado.Utils
 
         public static Dictionary<int, Dictionary<string, object>> GetContact(string name, string firstname, string lastname, string mail, int phone, int house_id)
         {
+            name = name.Replace("'", "");
+            firstname = firstname.Replace("'", "");
+            lastname = lastname.Replace("'", "");
+            mail = mail.Replace("'", "");
             Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string, object>>();
             string cmd = $"SELECT * FROM Contact WHERE " +
                          (name.Equals("") ? "" : $"Name LIKE '%{name}%' AND ") +
@@ -204,6 +220,11 @@ namespace Sprado.Utils
 
         public static DatabaseResponse EditContact(int id, string name, string firstname, string lastname, string mail, int phone, int house_id, bool isOwner, string description)
         {
+            name = name.Replace("'", "");
+            firstname = firstname.Replace("'", "");
+            lastname = lastname.Replace("'", "");
+            mail = mail.Replace("'", "");
+            description = description.Replace("'", "");
             DatabaseResponse response;
             try
             {
@@ -254,7 +275,9 @@ namespace Sprado.Utils
 
         public static DatabaseResponse AddHouse(string city, int zip, string street, int streetNo, int flats, int type, int owner, string description)
         {
-
+            city = city.Replace("'", "");
+            street = street.Replace("'", "");
+            description = description.Replace("'", "");
             string lastEditStatus = "ADD";
             int lastEditAuthor, createAuthor;
             DateTime lastEditDate, createDate;
@@ -290,6 +313,8 @@ namespace Sprado.Utils
         public static Dictionary<int, Dictionary<string, object>> GetHouse(string address, int addressNo, string city, int zip, int ownerId)
         {
 
+            city = city.Replace("'", "");
+            address = address.Replace("'", "");
             Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string,object>>();
 
             string cmd = "SELECT * FROM House WHERE " +
@@ -345,6 +370,10 @@ namespace Sprado.Utils
 
         public static DatabaseResponse EditHouse(int id, string city, int zip, string street, int streetNo, int flats, int type, int owner, string description)
         {
+
+            city = city.Replace("'", "");
+            street = street.Replace("'", "");
+            description = description.Replace("'", "");
             DatabaseResponse response;
             try
             {
@@ -423,7 +452,11 @@ namespace Sprado.Utils
 
         public static DatabaseResponse AddRevisionMan(string company, string firstname, string lastname, int phone, string email, string description)
         {
-
+            company = company.Replace("'", "");
+            firstname = firstname.Replace("'", "");
+            lastname = lastname.Replace("'", "");
+            email = email.Replace("'", "");
+            description = description.Replace("'", "");
             string lastEditStatus = "ADD";
             int lastEditAuthor, createAuthor;
             DateTime lastEditDate, createDate;
@@ -458,6 +491,11 @@ namespace Sprado.Utils
 
         public static Dictionary<int, Dictionary<string, object>> GetRevisionMan(string company, string firstname, string lastname, string email, int phone)
         {
+
+            company = company.Replace("'", "");
+            firstname = firstname.Replace("'", "");
+            lastname = lastname.Replace("'", "");
+            email = email.Replace("'", "");
 
             Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string, object>>();
 
@@ -514,6 +552,12 @@ namespace Sprado.Utils
 
         public static DatabaseResponse EditRevisionMan(int id, string company, string firstname, string lastname, int phone, string email, string description)
         {
+
+            company = company.Replace("'", "");
+            firstname = firstname.Replace("'", "");
+            lastname = lastname.Replace("'", "");
+            email = email.Replace("'", "");
+            description = description.Replace("'", "");
             DatabaseResponse response;
             try
             {
@@ -548,6 +592,8 @@ namespace Sprado.Utils
 
         public static DatabaseResponse AddRevisionType(string name, int cycle, string description)
         {
+            name = name.Replace("'", "");
+            description = description.Replace("'", "");
 
             string lastEditStatus = "ADD";
             int lastEditAuthor, createAuthor;
@@ -583,6 +629,7 @@ namespace Sprado.Utils
 
         public static Dictionary<int, Dictionary<string, object>> GetRevisionType(string name, int cycle)
         {
+            name = name.Replace("'", "");
 
             Dictionary<int, Dictionary<string, object>> response = new Dictionary<int, Dictionary<string, object>>();
 
@@ -636,6 +683,8 @@ namespace Sprado.Utils
 
         public static DatabaseResponse EditRevisionType(int id, string name, int cycle, string description)
         {
+            name = name.Replace("'", "");
+            description = description.Replace("'", "");
             DatabaseResponse response;
             try
             {
@@ -719,6 +768,7 @@ namespace Sprado.Utils
         public static DatabaseResponse AddRevision(int houseId, int revisionTypeId, int revisionManId, DateTime lastDate, string description)
         {
 
+            description = description.Replace("'", "");
             string lastEditStatus = "ADD";
             int lastEditAuthor, createAuthor;
             DateTime lastEditDate, createDate;
@@ -808,6 +858,7 @@ namespace Sprado.Utils
 
         public static DatabaseResponse EditRevision(int id, int houseId, int typeId, int manId, DateTime lastDate, bool useDate, string description)
         {
+            description = description.Replace("'", "");
             DatabaseResponse response;
             try
             {

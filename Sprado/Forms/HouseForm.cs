@@ -65,6 +65,7 @@ namespace Sprado.Forms
 
         private void showData()
         {
+            textBox6.Text = "";
             textBox1.Text = selectedData["Street"].ToString();
             textBox2.Text = selectedData["StreetNo"].ToString();
             textBox3.Text = selectedData["City"].ToString();

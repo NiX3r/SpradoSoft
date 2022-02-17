@@ -96,6 +96,7 @@ namespace Sprado.Forms
 
         private void showData()
         {
+            textBox1.Text = textBox2.Text = textBox6.Text = "";
             textBox10.Text = selectedData["CreateAuthor"].ToString();
             textBox7.Text = ((DateTime)selectedData["CreateDate"]).ToString("yyyy-MM-dd HH:mm:ss");
             textBox8.Text = selectedData["LastEditAuthor"].ToString();

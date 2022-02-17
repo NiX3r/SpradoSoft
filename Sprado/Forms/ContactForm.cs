@@ -61,6 +61,7 @@ namespace Sprado.Forms
             tCreateDate.Text = ((DateTime)SELECTED_DATA["CreateDate"]).ToString("yyyy-MM-dd HH:mm:ss");
             tLastEditAuthor.Text = SELECTED_DATA["LastEditAuthor"].ToString();
             tLastEditDate.Text = ((DateTime)SELECTED_DATA["LastEditDate"]).ToString("yyyy-MM-dd HH:mm:ss");
+            tHouse.Text = "";
             lbHouse.SelectedItem = SELECTED_DATA["House_ID"].GetType().Name.Equals("DBNull") ? null : houses[(int)SELECTED_DATA["House_ID"]];
         }
 

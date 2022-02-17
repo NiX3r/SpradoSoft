@@ -20,6 +20,7 @@ namespace Sprado.Forms
 
         private int SELECTED_ID;
         private Dictionary<string, object> SELECTED_DATA;
+        private Dictionary<int, string> houses = new Dictionary<int, string>();
 
         public ContactForm()
         {
@@ -37,10 +38,18 @@ namespace Sprado.Forms
             SELECTED_ID = -1;
             SELECTED_DATA = new Dictionary<string, object>();
 
+            houses = DatabaseUtils.GetHouses();
+
+            foreach(string item in houses.Values)
+            {
+                lbHouse.Items.Add(item);
+            }
+
         }
 
         private void showData()
         {
+            MessageBox.Show(SELECTED_DATA["House_ID"].GetType().Name);
             tName.Text = SELECTED_DATA["Name"].ToString();
             tFirstname.Text = SELECTED_DATA["Firstname"].ToString();
             tLastname.Text = SELECTED_DATA["Lastname"].ToString();
@@ -52,11 +61,13 @@ namespace Sprado.Forms
             tCreateDate.Text = ((DateTime)SELECTED_DATA["CreateDate"]).ToString("yyyy-MM-dd HH:mm:ss");
             tLastEditAuthor.Text = SELECTED_DATA["LastEditAuthor"].ToString();
             tLastEditDate.Text = ((DateTime)SELECTED_DATA["LastEditDate"]).ToString("yyyy-MM-dd HH:mm:ss");
+            lbHouse.SelectedItem = SELECTED_DATA["House_ID"].GetType().Name.Equals("DBNull") ? null : houses[(int)SELECTED_DATA["House_ID"]];
         }
 
         private void clearData()
         {
             tName.Text = tFirstname.Text = tLastname.Text = tMail.Text = tPhone.Text = rtDescription.Text = tCreateAuthor.Text = tCreateDate.Text = tLastEditDate.Text = tLastEditAuthor.Text = "";
+            lbHouse.SelectedItem = null;
             SELECTED_ID = -1;
             SELECTED_DATA = new Dictionary<string, object>();
         }
@@ -65,12 +76,20 @@ namespace Sprado.Forms
         {
             if(!tName.Text.Equals("") && !tFirstname.Text.Equals("") && !tLastname.Text.Equals("") && !tMail.Text.Equals(""))
             {
+
+                int houseId = -1;
+                foreach(int item in houses.Keys)
+                {
+                    if (houses[item].Equals(lbHouse.SelectedItem))
+                        houseId = item;
+                }
+
                 DatabaseResponse response = DatabaseUtils.AddContact(tName.Text, 
                                                                     tFirstname.Text, 
-                                                                    tLastname.Text, 
+                                                                    tLastname.Text,
                                                                     tMail.Text, 
                                                                     tPhone.Text.Equals("") ? -1 : Convert.ToInt32(tPhone.Text), 
-                                                                    lbHouse.SelectedItem == null ? -1 : Convert.ToInt32(lbHouse.SelectedItem),
+                                                                    houseId,
                                                                     cbOwner.Checked,
                                                                     rtDescription.Text.Equals("") ? null : rtDescription.Text);
 
@@ -97,12 +116,20 @@ namespace Sprado.Forms
         {
             if (tName.Text.Length > 0 || tFirstname.Text.Length > 0 || tLastname.Text.Length > 0 || tMail.Text.Length > 0 || tPhone.Text.Length > 0 || (lbHouse.SelectedItem != null))
             {
+
+                int houseId = -1;
+                foreach (int item in houses.Keys)
+                {
+                    if (houses[item].Equals(lbHouse.SelectedItem))
+                        houseId = item;
+                }
+
                 Dictionary<int, Dictionary<string, object>> response = DatabaseUtils.GetContact(tName.Text,
                                                                                                 tFirstname.Text,
                                                                                                 tLastname.Text,
                                                                                                 tMail.Text,
                                                                                                 tPhone.Text.Equals("") ? -1 : Convert.ToInt32(tPhone.Text),
-                                                                                                lbHouse.SelectedItem == null ? -1 : Convert.ToInt32(lbHouse.SelectedItem));
+                                                                                                houseId);
                 if(response.Count == 1)
                 {
                     SELECTED_ID = response.Keys.ElementAt(0);
@@ -168,13 +195,21 @@ namespace Sprado.Forms
             {
                 if (!tName.Text.Equals("") && !tFirstname.Text.Equals("") && !tLastname.Text.Equals("") && !tMail.Text.Equals(""))
                 {
+
+                    int houseId = -1;
+                    foreach (int item in houses.Keys)
+                    {
+                        if (houses[item].Equals(lbHouse.SelectedItem))
+                            houseId = item;
+                    }
+
                     DatabaseResponse response = DatabaseUtils.EditContact(SELECTED_ID,
                                                                     tName.Text,
                                                                     tFirstname.Text,
                                                                     tLastname.Text,
                                                                     tMail.Text,
                                                                     tPhone.Text.Equals("") ? -1 : Convert.ToInt32(tPhone.Text),
-                                                                    lbHouse.SelectedItem == null ? -1 : Convert.ToInt32(lbHouse.SelectedItem),
+                                                                    houseId,
                                                                     cbOwner.Checked,
                                                                     rtDescription.Text.Equals("") ? null : rtDescription.Text);
 

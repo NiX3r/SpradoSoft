@@ -320,6 +320,7 @@ namespace Sprado.Forms
             this.tHouse.Name = "tHouse";
             this.tHouse.Size = new System.Drawing.Size(250, 15);
             this.tHouse.TabIndex = 99;
+            this.tHouse.TextChanged += new System.EventHandler(this.tHouse_TextChanged);
             // 
             // label6
             // 

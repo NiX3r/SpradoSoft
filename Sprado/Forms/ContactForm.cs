@@ -235,5 +235,15 @@ namespace Sprado.Forms
                 }
             }
         }
+
+        private void tHouse_TextChanged(object sender, EventArgs e)
+        {
+            lbHouse.Items.Clear();
+            foreach(string item in houses.Values)
+            {
+                if(item.Contains(tHouse.Text))
+                    lbHouse.Items.Add(item);
+            }
+        }
     }
 }

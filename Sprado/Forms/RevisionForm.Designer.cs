@@ -110,6 +110,7 @@ namespace Sprado.Forms
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 117;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox3
             // 
@@ -409,9 +410,9 @@ namespace Sprado.Forms
             this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.checkBox1.Location = new System.Drawing.Point(648, 37);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(92, 17);
+            this.checkBox1.Size = new System.Drawing.Size(102, 17);
             this.checkBox1.TabIndex = 133;
-            this.checkBox1.Text = "hledat podle";
+            this.checkBox1.Text = "zakomponovat";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // RevisionForm
@@ -420,7 +421,6 @@ namespace Sprado.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(785, 561);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
@@ -451,6 +451,7 @@ namespace Sprado.Forms
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.checkBox1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RevisionForm";

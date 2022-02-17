@@ -204,6 +204,48 @@ namespace Sprado.Forms
 
         }
 
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+            int houseId = -1, typeId = -1, manId = -1;
+
+            if (listBox1.SelectedItem != null)
+            {
+                foreach (int item in houses.Keys)
+                {
+                    if (listBox1.SelectedItem.ToString().Equals(houses[item]))
+                        houseId = item;
+
+                }
+            }
+            if (listBox2.SelectedItem != null)
+            {
+                foreach (int item in types.Keys)
+                {
+                    if (listBox2.SelectedItem.ToString().Equals(types[item]))
+                        typeId = item;
+
+                }
+            }
+            if (listBox3.SelectedItem != null)
+            {
+                foreach (int item in revisionMen.Keys)
+                {
+                    if (listBox3.SelectedItem.ToString().Equals(revisionMen[item]))
+                        manId = item;
+
+                }
+            }
+
+            DatabaseResponse databaseResponse = DatabaseUtils.EditRevision(selectedId, houseId, typeId, manId, dateTimePicker1.Value, checkBox1.Checked, richTextBox1.Text);
+
+            if (databaseResponse == DatabaseResponse.EDITED)
+            {
+                MessageBox.Show("Dům úspěšně upraven.");
+            }
+
+        }
+
         public RevisionForm()
         {
             InitializeComponent();

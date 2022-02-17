@@ -764,5 +764,36 @@ namespace Sprado.Utils
             return response;
         }
 
+        public static DatabaseResponse EditRevision(int id, int houseId, int typeId, int manId, DateTime lastDate, bool useDate, string description)
+        {
+            DatabaseResponse response;
+            try
+            {
+
+                string cmd = "UPDATE Revision SET " +
+                             (houseId == -1 ? "" : $"House_ID={houseId},") +
+                             (typeId == -1 ? "" : $"RevisionType_ID={typeId},") +
+                             (manId == -1 ? "" : $"RevisionMan_ID={manId},") +
+                             (useDate ? $"LastDate='{lastDate.ToString("yyyy-MM-dd")}'," : "") +
+                             (description == "" ? "" : $"Description='{description}',");
+
+                cmd += $"LastEditStatus='EDIT'," +
+                       $"LastEditDate='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}'," +
+                       $"LastEditAuthor={Convert.ToInt32(ProgramUtils.LoggedUser["id"])} WHERE ID={id};";
+
+                Clipboard.SetText(cmd);
+
+                var command = new MySqlCommand(cmd, connection);
+                command.ExecuteNonQuery();
+                response = DatabaseResponse.EDITED;
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+                response = DatabaseResponse.ERROR;
+            }
+            return response;
+        }
+
     }
 }

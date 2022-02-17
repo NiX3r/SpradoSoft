@@ -256,17 +256,17 @@ namespace Sprado.Utils
 
         // HOUSE FORM DATABASE UTILS
 
-        public static Dictionary<string, int> GetContacts()
+        public static Dictionary<int, string> GetContacts()
         {
             
-            Dictionary<string,int> output = new Dictionary<string,int>();
+            Dictionary<int, string> output = new Dictionary<int, string> ();
 
             var command = new MySqlCommand("SELECT ID,Firstname,Lastname,Name FROM Contact;", connection);
             var reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                output.Add(reader.GetString(1) + " " + reader.GetString(2) + ", " + reader.GetString(3), reader.GetInt32(0));
+                output.Add(reader.GetInt32(0), reader.GetString(1) + " " + reader.GetString(2) + ", " + reader.GetString(3));
             }
             reader.Close();
             return output;

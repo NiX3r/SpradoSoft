@@ -16,7 +16,7 @@ namespace Sprado.Forms
     public partial class HouseForm : Form
     {
 
-        private Dictionary<string, int> contacts = new Dictionary<string, int>();
+        private Dictionary<int, string> contacts = new Dictionary<int, string>();
         private int selectedId = -1;
         private Dictionary<string, object> selectedData = new Dictionary<string, object>();
 
@@ -36,7 +36,7 @@ namespace Sprado.Forms
 
             contacts = DatabaseUtils.GetContacts();
 
-            foreach(string s in contacts.Keys)
+            foreach(string s in contacts.Values)
             {
                 listBox1.Items.Add(s);
             }
@@ -46,7 +46,7 @@ namespace Sprado.Forms
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            foreach(string s in contacts.Keys)
+            foreach(string s in contacts.Values)
             {
                 if (s.Contains(textBox6.Text))
                 {
@@ -76,11 +76,7 @@ namespace Sprado.Forms
             textBox8.Text = selectedData["LastEditAuthor"].ToString();
             textBox9.Text = ((DateTime)selectedData["LastEditDate"]).ToString("yyyy-MM-dd HH:mm:ss");
             listBox2.SelectedIndex = (int)selectedData["Type"];
-            foreach(string item in contacts.Keys)
-            {
-                if(contacts[item] == (int)selectedData["Owner"])
-                    listBox1.SelectedItem = item;
-            }
+            listBox1.SelectedItem = contacts[(int)selectedData["Owner"]];
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -90,7 +86,16 @@ namespace Sprado.Forms
                textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "")
             {
                 string address = textBox1.Text, city = textBox3.Text, description = richTextBox1.Text;
-                int addressNo = Convert.ToInt32(textBox2.Text), zipCode = Convert.ToInt32(textBox4.Text), flatsCount = Convert.ToInt32(textBox5.Text), ownerId = contacts[listBox1.SelectedItem.ToString()], type = listBox2.SelectedIndex;
+                int addressNo = Convert.ToInt32(textBox2.Text), zipCode = Convert.ToInt32(textBox4.Text), flatsCount = Convert.ToInt32(textBox5.Text), ownerId = -1, type = listBox2.SelectedIndex;
+
+                foreach(int item in contacts.Keys)
+                {
+                    if (contacts[item].Equals(listBox1.SelectedItem.ToString()))
+                    {
+                        ownerId = item;
+                        break;
+                    }
+                }
 
                 DatabaseResponse databaseResponse = DatabaseUtils.AddHouse(city, zipCode, address, zipCode, flatsCount, type, ownerId, description);
 
@@ -110,11 +115,21 @@ namespace Sprado.Forms
                 textBox4.Text.Length > 0 || (listBox1.SelectedItem != null))
             {
 
+                int ownerId = -1;
+                foreach (int item in contacts.Keys)
+                {
+                    if (contacts[item].Equals(listBox1.SelectedItem.ToString()))
+                    {
+                        ownerId = item;
+                        break;
+                    }
+                }
+
                 Dictionary<int, Dictionary<string, object>> response = DatabaseUtils.GetHouse(textBox1.Text,
                                                                                               textBox2.Text == "" ? -1 : Convert.ToInt32(textBox2.Text),
                                                                                               textBox3.Text,
                                                                                               textBox4.Text == "" ? -1 : Convert.ToInt32(textBox4.Text),
-                                                                                              listBox1.SelectedItem == null ? -1 : contacts[listBox1.SelectedItem.ToString()]);
+                                                                                              ownerId);
 
                 if (response.Count == 1)
                 {
@@ -183,7 +198,16 @@ namespace Sprado.Forms
                textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "")
             {
                 string address = textBox1.Text, city = textBox3.Text, description = richTextBox1.Text;
-                int addressNo = Convert.ToInt32(textBox2.Text), zipCode = Convert.ToInt32(textBox4.Text), flatsCount = Convert.ToInt32(textBox5.Text), ownerId = contacts[listBox1.SelectedItem.ToString()], type = listBox2.SelectedIndex;
+                int addressNo = Convert.ToInt32(textBox2.Text), zipCode = Convert.ToInt32(textBox4.Text), flatsCount = Convert.ToInt32(textBox5.Text), ownerId = -1, type = listBox2.SelectedIndex;
+
+                foreach (int item in contacts.Keys)
+                {
+                    if (contacts[item].Equals(listBox1.SelectedItem.ToString()))
+                    {
+                        ownerId = item;
+                        break;
+                    }
+                }
 
                 if (address.Equals(selectedData["Street"])) address = null;
                 if (city.Equals(selectedData["City"])) city = null;

@@ -63,19 +63,28 @@ namespace Sprado.Forms
                 foreach(int item in houses.Keys)
                 {
                     if (listBox1.SelectedItem.ToString().Equals(houses[item]))
+                    {
                         houseId = item;
+                        break;
+                    }
 
                 }
                 foreach (int item in types.Keys)
                 {
                     if (listBox2.SelectedItem.ToString().Equals(types[item]))
+                    {
                         typeId = item;
+                        break;
+                    }
 
                 }
                 foreach (int item in revisionMen.Keys)
                 {
                     if (listBox3.SelectedItem.ToString().Equals(revisionMen[item]))
+                    {
                         manId = item;
+                        break;
+                    }
 
                 }
 
@@ -117,7 +126,10 @@ namespace Sprado.Forms
                 foreach (int item in houses.Keys)
                 {
                     if (listBox1.SelectedItem.ToString().Equals(houses[item]))
+                    {
                         houseId = item;
+                        break;
+                    }
 
                 }
             }
@@ -126,7 +138,10 @@ namespace Sprado.Forms
                 foreach (int item in types.Keys)
                 {
                     if (listBox2.SelectedItem.ToString().Equals(types[item]))
+                    {
                         typeId = item;
+                        break;
+                    }
 
                 }
             }
@@ -135,7 +150,10 @@ namespace Sprado.Forms
                 foreach (int item in revisionMen.Keys)
                 {
                     if (listBox3.SelectedItem.ToString().Equals(revisionMen[item]))
+                    {
                         manId = item;
+                        break;
+                    }
 
                 }
             }
@@ -215,7 +233,10 @@ namespace Sprado.Forms
                 foreach (int item in houses.Keys)
                 {
                     if (listBox1.SelectedItem.ToString().Equals(houses[item]))
+                    {
                         houseId = item;
+                        break;
+                    }
 
                 }
             }
@@ -224,7 +245,10 @@ namespace Sprado.Forms
                 foreach (int item in types.Keys)
                 {
                     if (listBox2.SelectedItem.ToString().Equals(types[item]))
+                    {
                         typeId = item;
+                        break;
+                    }
 
                 }
             }
@@ -233,7 +257,10 @@ namespace Sprado.Forms
                 foreach (int item in revisionMen.Keys)
                 {
                     if (listBox3.SelectedItem.ToString().Equals(revisionMen[item]))
+                    {
                         manId = item;
+                        break;
+                    }
 
                 }
             }

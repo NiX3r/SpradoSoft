@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -198,6 +199,46 @@ namespace Sprado.Forms
                 {
                     MessageBox.Show("Dům úspěšně upraven.");
                 }
+
+            }
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
+            if(selectedId != -1)
+            {
+                
+                List<string> contacts = DatabaseUtils.GetContactEmailsByHouseID(selectedId);
+                string cmd = "mailto:?bcc=";
+
+                foreach(string mail in contacts)
+                {
+                    cmd += mail + ",";
+                }
+                cmd = cmd.Substring(0, cmd.Length - 1);
+
+                Process.Start(cmd);
+
+            }
+
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            if (selectedId != -1)
+            {
+
+                List<string> contacts = DatabaseUtils.GetOwnerContactEmailsByHouseID(selectedId);
+                string cmd = "mailto:?bcc=";
+
+                foreach (string mail in contacts)
+                {
+                    cmd += mail + ",";
+                }
+                cmd = cmd.Substring(0, cmd.Length - 1);
+
+                Process.Start(cmd);
 
             }
         }

@@ -240,12 +240,12 @@ namespace Sprado.Utils
             
             Dictionary<string,int> output = new Dictionary<string,int>();
 
-            var command = new MySqlCommand("SELECT ID,Firstname,Lastname FROM Contact;", connection);
+            var command = new MySqlCommand("SELECT ID,Firstname,Lastname,Name FROM Contact;", connection);
             var reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                output.Add(reader.GetString(1) + " " + reader.GetString(2), reader.GetInt32(0));
+                output.Add(reader.GetString(1) + " " + reader.GetString(2) + ", " + reader.GetString(3), reader.GetInt32(0));
             }
             reader.Close();
             return output;
@@ -371,6 +371,48 @@ namespace Sprado.Utils
             {
                 ProgramUtils.ExceptionThrowned(ex);
                 response = DatabaseResponse.ERROR;
+            }
+            return response;
+        }
+
+        public static List<string> GetContactEmailsByHouseID(int id)
+        {
+            List<string> response = new List<string>();
+            string cmd = $"SELECT Email FROM Contact WHERE House_ID={id};";
+            try
+            {
+                var command = new MySqlCommand(cmd, connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    response.Add(reader.GetString(0));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+            }
+            return response;
+        }
+
+        public static List<string> GetOwnerContactEmailsByHouseID(int id)
+        {
+            List<string> response = new List<string>();
+            string cmd = $"SELECT Email FROM Contact WHERE House_ID={id} AND IsOwner=1;";
+            try
+            {
+                var command = new MySqlCommand(cmd, connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    response.Add(reader.GetString(0));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
             }
             return response;
         }

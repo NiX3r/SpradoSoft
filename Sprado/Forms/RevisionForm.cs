@@ -170,6 +170,40 @@ namespace Sprado.Forms
 
         }
 
+        private void clearData()
+        {
+            listBox1.SelectedItem = listBox2.SelectedItem = listBox3.SelectedItem = null;
+            dateTimePicker1.Value = DateTime.Now;
+            richTextBox1.Text = "";
+            selectedId = -1;
+            selectedData = new Dictionary<string, object>();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+            if(selectedId != -1)
+            {
+
+                if (MessageBox.Show("Opravdu si přejete odstranit tuto revizi?", "Odstranění dat", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    DatabaseResponse response = DatabaseUtils.RemoveRevision(selectedId);
+                    switch (response)
+                    {
+                        case DatabaseResponse.REMOVED:
+                            MessageBox.Show("Úspěšně jsi smazal kontakt!");
+                            clearData();
+                            break;
+                        case DatabaseResponse.ERROR:
+                            MessageBox.Show("Nastala chyba programu. Chyba jiz odeslana, prosim vyckejte na spravce aplikace!");
+                            break;
+                    }
+                }
+
+            }
+
+        }
+
         public RevisionForm()
         {
             InitializeComponent();

@@ -20,6 +20,7 @@ namespace Sprado.Utils
         public static Dictionary<string, Form> SubForms { get; set; }
         public static Dictionary<string, object> LoggedUser { get; set; }
         public static Dictionary<string, Bitmap> Images { get; set; }
+        public static bool IsTest { get; set; }
 
         private static DiscordWebhook WEBHOOK = new DiscordWebhook();
 

@@ -13,7 +13,7 @@ namespace Sprado
     {
 
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
 
             // Initialize variables
@@ -21,6 +21,17 @@ namespace Sprado
             LogUtils.Log("Sprado program start");
 
             LogUtils.Log("Start initialize program");
+
+            if(args.Length == 1)
+            {
+                if (args[0].Equals("-test"))
+                {
+                    ProgramUtils.IsTest = true;
+                }
+            }
+            else
+                ProgramUtils.IsTest = false;
+
             ProgramUtils.Colors = new Dictionary<string, Color>();
             ProgramUtils.Colors.Add("main", Color.FromArgb(0, 153, 255));
             ProgramUtils.Colors.Add("secondary", Color.FromArgb(0, 49, 81));

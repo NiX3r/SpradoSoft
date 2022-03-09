@@ -17,7 +17,10 @@ namespace Sprado.Utils
 
         public static bool OpenConnection()
         {
-            string connectionCredentials = $"server={SecretUtils.GetDatabaseServer()};user={SecretUtils.GetDatabaseUsername()};pwd={SecretUtils.GetDatabasePassword()};database={SecretUtils.GetDatabaseDatabase()}";
+            string connectionCredentials = $"server={SecretUtils.GetDatabaseServer()};" +
+                                           $"user={SecretUtils.GetDatabaseUsername()};" +
+                                           $"pwd={SecretUtils.GetDatabasePassword()};" +
+                                           $"database={SecretUtils.GetDatabaseDatabase()}";
             connection = new MySqlConnection(connectionCredentials);
             try
             {

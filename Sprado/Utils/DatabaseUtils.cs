@@ -313,6 +313,27 @@ namespace Sprado.Utils
 
         }
 
+        public static Dictionary<string, object> GetHouse(int id)
+        {
+            Dictionary<string, object> response = new Dictionary<string, object>();
+            try
+            {
+                var command = new MySqlCommand($"SELECT * FROM House WHERE ID={id};", connection);
+                var reader = command.ExecuteReader();
+                reader.Read();
+                for (int i = 1; i < reader.FieldCount; i++)
+                {
+                    response.Add(reader.GetName(i), reader.GetValue(i));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+            }
+            return response;
+        }
+
         public static Dictionary<int, Dictionary<string, object>> GetHouse(string address, int addressNo, string city, int zip, int ownerId)
         {
 
@@ -876,8 +897,6 @@ namespace Sprado.Utils
                 cmd += $"LastEditStatus='EDIT'," +
                        $"LastEditDate='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}'," +
                        $"LastEditAuthor={Convert.ToInt32(ProgramUtils.LoggedUser["id"])} WHERE ID={id};";
-
-                Clipboard.SetText(cmd);
 
                 var command = new MySqlCommand(cmd, connection);
                 command.ExecuteNonQuery();

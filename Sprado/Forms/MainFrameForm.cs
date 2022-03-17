@@ -113,6 +113,10 @@ namespace Sprado
             openForm(ProgramUtils.SubForms[SELECTED_BUTTON.Text]);
             UpdateUser();
         }
+        public void SelectHouseButton()
+        {
+            selectButton(this.buttonHouse);
+        }
 
     }
 }

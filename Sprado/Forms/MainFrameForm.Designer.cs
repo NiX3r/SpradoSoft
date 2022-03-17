@@ -32,7 +32,6 @@ namespace Sprado
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrame));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonSettings = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.homeRevision = new System.Windows.Forms.Button();
             this.buttonRevisionType = new System.Windows.Forms.Button();
@@ -62,7 +61,6 @@ namespace Sprado
             // panel2
             // 
             resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Controls.Add(this.buttonSettings);
             this.panel2.Controls.Add(this.buttonList);
             this.panel2.Controls.Add(this.homeRevision);
             this.panel2.Controls.Add(this.buttonRevisionType);
@@ -71,18 +69,6 @@ namespace Sprado
             this.panel2.Controls.Add(this.buttonHouse);
             this.panel2.Controls.Add(this.buttonHome);
             this.panel2.Name = "panel2";
-            // 
-            // buttonSettings
-            // 
-            this.buttonSettings.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.buttonSettings, "buttonSettings");
-            this.buttonSettings.FlatAppearance.BorderSize = 0;
-            this.buttonSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.UseVisualStyleBackColor = true;
-            this.buttonSettings.Click += new System.EventHandler(this.controlButton_Click);
-            this.buttonSettings.MouseEnter += new System.EventHandler(this.controlButton_MouseEnter);
-            this.buttonSettings.MouseLeave += new System.EventHandler(this.controlButton_MouseLeave);
             // 
             // buttonList
             // 
@@ -222,7 +208,6 @@ namespace Sprado
         private System.Windows.Forms.Button homeRevision;
         private System.Windows.Forms.Panel subFormPanel;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.Label label3;
     }

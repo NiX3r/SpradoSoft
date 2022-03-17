@@ -267,5 +267,20 @@ namespace Sprado.Forms
 
             }
         }
+
+        public void loadHouseById(int id)
+        {
+
+            Dictionary<string, object> data = DatabaseUtils.GetHouse(id);
+
+            if(data.Count > 0)
+            {
+                selectedId = id;
+                selectedData = data;
+                showData();
+            }
+
+        }
+
     }
 }

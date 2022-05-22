@@ -75,6 +75,8 @@ namespace Sprado
                 Application.Exit();
             }
 
+            ProgramUtils.MainUI.UpdateVersion("0.0.1" + (ProgramUtils.IsTest ? " - debug_version" : ""));
+
             // Load main ui
             LogUtils.Log("Main frame start");
             Application.EnableVisualStyles();

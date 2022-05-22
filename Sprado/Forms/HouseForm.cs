@@ -97,7 +97,7 @@ namespace Sprado.Forms
                     }
                 }
 
-                DatabaseResponse databaseResponse = DatabaseUtils.AddHouse(city, zipCode, address, zipCode, flatsCount, type, ownerId, description);
+                DatabaseResponse databaseResponse = DatabaseUtils.AddHouse(city, zipCode, address, addressNo, flatsCount, type, ownerId, description);
 
                 if(databaseResponse == DatabaseResponse.CREATED)
                 {

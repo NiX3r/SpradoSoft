@@ -124,10 +124,6 @@
   <data name="buttonList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonList.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="buttonList.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -144,6 +140,7 @@
   <data name="buttonList.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 40</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonList.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>

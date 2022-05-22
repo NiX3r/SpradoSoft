@@ -105,6 +105,11 @@ namespace Sprado
             pictureBox1.ImageLocation = (string)ProgramUtils.LoggedUser["profile"];
         }
 
+        public void UpdateVersion(string ver)
+        {
+            this.Text = "SpradoSoft - v" + ver;
+        }
+
         public void Login()
         {
             SELECTED_BUTTON = buttonHome;

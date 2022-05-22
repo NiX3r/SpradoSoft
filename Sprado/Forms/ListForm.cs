@@ -13,8 +13,12 @@ namespace Sprado.Forms
 {
     public partial class ListForm : Form
     {
+
+        private Button lastButton;
+
         public ListForm()
         {
+            lastButton = null;
             InitializeComponent();
         }
 
@@ -31,6 +35,10 @@ namespace Sprado.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (lastButton != null)
+                lastButton.BackColor = Color.FromArgb(66, 66, 66);
+            lastButton = (Button)sender;
+            lastButton.BackColor = Color.FromArgb(88,88,88);
             openForm(new ContactSubForm());
         }
     }

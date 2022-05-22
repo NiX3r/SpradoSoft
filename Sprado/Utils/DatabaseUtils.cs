@@ -839,7 +839,6 @@ namespace Sprado.Utils
 
             if (cmd.Substring(cmd.Length - 5).Equals(" AND "))
                 cmd = cmd.Substring(0, cmd.Length - 5);
-            MessageBox.Show(cmd);
             try
             {
                 var command = new MySqlCommand(cmd, connection);
@@ -909,6 +908,38 @@ namespace Sprado.Utils
                 response = DatabaseResponse.ERROR;
             }
             return response;
+        }
+
+        public static Dictionary<int, List<object>> GetContactList(string house)
+        {
+
+            Dictionary<int, List<object>> response = new Dictionary<int, List<object>>();
+            string cmd = $"SELECT Contact.Name,Contact.Firstname,Contact.Lastname,House.Street,House.StreetNo,Contact.IsOwner,Contact.Email,Contact.Phone,Contact.Description FROM Contact INNER JOIN House ON House.ID=Contact.House_ID WHERE House.Street LIKE '%{house}%';";
+
+            try
+            {
+                var command = new MySqlCommand(cmd, connection);
+                var reader = command.ExecuteReader();
+                int id = 0;
+                while (reader.Read())
+                {
+                    List<object> data = new List<object>();
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        data.Add(reader.GetValue(i));
+                    }
+                    response.Add(id, data);
+                    id++;
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                ProgramUtils.ExceptionThrowned(ex);
+            }
+
+            return response;
+
         }
 
     }

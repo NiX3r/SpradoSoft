@@ -39,16 +39,6 @@ namespace Sprado
             ProgramUtils.Colors.Add("menu", Color.FromArgb(55, 55, 55));
             ProgramUtils.Colors.Add("background", Color.FromArgb(44, 44, 44));
 
-            ProgramUtils.SubForms = new Dictionary<string, Form>();
-            ProgramUtils.SubForms.Add("Úvodní strana", new HomeForm());
-            ProgramUtils.SubForms.Add("Domy", new HouseForm());
-            ProgramUtils.SubForms.Add("Kontakty", new ContactForm());
-            ProgramUtils.SubForms.Add("Revizáci", new RevisionManForm());
-            ProgramUtils.SubForms.Add("Typy revizí", new RevisionTypeForm());
-            ProgramUtils.SubForms.Add("Revize", new RevisionForm());
-            ProgramUtils.SubForms.Add("Seznam dle ...", new ListForm());
-            ProgramUtils.SubForms.Add("Nastavení", new SettingsForm());
-
             ProgramUtils.Images = new Dictionary<string, Bitmap>();
             ProgramUtils.Images.Add("add", Sprado.Properties.Resources.add);
             ProgramUtils.Images.Add("remove", Sprado.Properties.Resources.remove);

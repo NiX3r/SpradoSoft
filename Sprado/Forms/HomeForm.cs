@@ -41,9 +41,10 @@ namespace Sprado.Forms
             {
                 if (houses[key].Equals(listBox1.SelectedItem.ToString()))
                 {
-                    ProgramUtils.MainUI.openForm(ProgramUtils.SubForms["Domy"]);
+                    HouseForm houseForm = new HouseForm();
+                    ProgramUtils.MainUI.openForm(houseForm);
                     ProgramUtils.MainUI.SelectHouseButton();
-                    ((HouseForm)ProgramUtils.SubForms["Domy"]).loadHouseById(key);
+                    houseForm.loadHouseById(key);
                 }
             }
 

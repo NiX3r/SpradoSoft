@@ -41,7 +41,30 @@ namespace Sprado
             if((bool)ProgramUtils.LoggedUser["logged"])
             {
                 selectButton((Button)sender);
-                openForm(ProgramUtils.SubForms[((Button)sender).Text]);
+                switch (((Button)sender).Name)
+                {
+                    case "buttonHome":
+                        openForm(new HomeForm());
+                        break;
+                    case "buttonHouse":
+                        openForm(new HouseForm());
+                        break;
+                    case "buttonContact":
+                        openForm(new ContactForm());
+                        break;
+                    case "buttonRevisionMan":
+                        openForm(new RevisionManForm());
+                        break;
+                    case "buttonRevisionType":
+                        openForm(new RevisionTypeForm());
+                        break;
+                    case "buttonRevision":
+                        openForm(new RevisionForm());
+                        break;
+                    case "buttonList":
+                        openForm(new ListForm());
+                        break;
+                }
             }
         }
 
@@ -113,9 +136,9 @@ namespace Sprado
         public void Login()
         {
             SELECTED_BUTTON = buttonHome;
-            CURRENT_FORM = ProgramUtils.SubForms[SELECTED_BUTTON.Text];
+            CURRENT_FORM = new HomeForm();
             selectButton(SELECTED_BUTTON);
-            openForm(ProgramUtils.SubForms[SELECTED_BUTTON.Text]);
+            openForm(CURRENT_FORM);
             UpdateUser();
         }
         public void SelectHouseButton()

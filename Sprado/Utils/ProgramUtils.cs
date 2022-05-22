@@ -17,7 +17,6 @@ namespace Sprado.Utils
         public static MainFrame MainUI { get; set; }
         public static Color MainColor { get; set; }
         public static Dictionary<string, Color> Colors { get; set; }
-        public static Dictionary<string, Form> SubForms { get; set; }
         public static Dictionary<string, object> LoggedUser { get; set; }
         public static Dictionary<string, Bitmap> Images { get; set; }
         public static bool IsTest { get; set; }
